@@ -1,3 +1,5 @@
+-- sql 파일로 설정
+
 
 DROP TABLE  if exists user;
 DROP TABLE  if exists nonuser;
