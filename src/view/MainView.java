@@ -47,8 +47,8 @@ public class MainView {
 					System.out.println();
 					System.out.println("                  로그인에 성공하셨습니다.");
 					System.out.println();
-		
-					ParcelinfoView.getinstance().info(userId);
+
+					OrderView.getinstance().order(userId); //ParcelinfoView.getinstance().info(userId);
 				} else {
 					System.out.println("-----------------------------------------------------");
 					System.out.println();
