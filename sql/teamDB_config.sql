@@ -1,5 +1,6 @@
--- 작성일시 : 2023-11-04
+-- 작성일시 : 2023-11-03
 -- 작성자 : 이창규
+-- 수정일시 : 2023-11-04
 
 DROP TABLE  if exists user;
 DROP TABLE  if exists nonuser;
@@ -93,5 +94,8 @@ alter table waybill add foreign key(user_id) REFERENCES user( user_id);
 alter table waybill add foreign key(company_cd) REFERENCES company( company_cd);
 alter table user_address add foreign key(user_id) REFERENCES user( user_id);
 alter table parcel add foreign key(waybill_no) REFERENCES waybill( waybill_no);
-ALTER TABLE nonuser ADD PRIMARY KEY(non_cp);
-alter table nonuser add foreign key(non_cp) REFERENCES waybill( non_cp);
+-- 아래 sql문은 잘못 되었으므로 변경
+-- ALTER TABLE nonuser ADD PRIMARY KEY(non_cp);
+-- alter table nonuser add foreign key(non_cp) REFERENCES waybill( non_cp);
+alter table waybill add foreign key (non_cp) REFERENCES nonuser( non_cp);
+-- 변경 완료
