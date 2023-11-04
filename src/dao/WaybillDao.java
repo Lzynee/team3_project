@@ -248,7 +248,7 @@ public class WaybillDao {
 		
 		return -1;
 	}
-	
+
 //	public List<Company> selectCompanyAll() {
 //
 //		List<Company> list = new ArrayList<>();
@@ -273,7 +273,8 @@ public class WaybillDao {
 //
 //		return list;
 //	}
-	
+
+
 	public String selectCompanyByName(String companyCd) {
 
 		String name = null;
