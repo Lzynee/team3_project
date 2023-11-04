@@ -93,7 +93,7 @@ select * from nonuser;
 alter table waybill add foreign key(user_id) REFERENCES user( user_id);
 alter table waybill add foreign key(company_cd) REFERENCES company( company_cd);
 alter table user_address add foreign key(user_id) REFERENCES user( user_id);
-alter table parcel add foreign key(waybill_no) REFERENCES waybill( waybill_no);
+alter table parcel add foreign key(waybill_no) REFERENCES waybill( waybill_no) ON DELETE CASCADE;
 -- 아래 sql문은 잘못 되었으므로 변경
 -- ALTER TABLE nonuser ADD PRIMARY KEY(non_cp);
 -- alter table nonuser add foreign key(non_cp) REFERENCES waybill( non_cp);
