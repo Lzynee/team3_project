@@ -9,13 +9,13 @@ public class ParcelinfoView implements CommonView {
 	private static ParcelinfoView view = new ParcelinfoView();
 
 	
-	public void info(String userId) {
+	public void info(String userId,String parcelName) {
 
 		ParcelDao pdao = new ParcelDao();
 
 		int width = 0, length = 0, height = 0;
 		int cost = 0, mass = 0;
-		String parcelName = "";
+
 		String volume = "";
 
 		try {
@@ -33,18 +33,21 @@ public class ParcelinfoView implements CommonView {
 				System.out.println();
 				System.out.println("-----------------------------------------------------");
 				System.out.println();
-				System.out.println("                   [ 무게 및 크기 측정 ]");
+				// 무게 => 수량 , 크기 => 사이즈로 문장 변경
+				System.out.println("                   [ 수량 및 사이즈 측정 ]");
 				System.out.println();
-				System.out.println(" 무게와 크기를 입력해 주세요");
+				// 무게 => 수량 , 크기 => 사이즈로 문장 변경
+				System.out.println(" 수량와 사이즈를 입력해 주세요");
 				System.out.println("-----------------------------------------------------");
 
-				// 무게당 요금 계산
+				// 수량별 요금 계산
+				// 로직 변경 ( 이창규 )
 				while (true) {
-					System.out.print("무게(kg) : ");
+					System.out.print("수량(개) : ");
 					mass = Integer.parseInt(scan.nextLine());
 
-					if (mass > 20) {
-						System.out.println("20kg 초과는 보낼수 없습니다.");
+					if (mass < 1) {
+						System.out.println("수량을 확인하여 다시 입력해주세요.");
 						continue;
 					}
 					break;

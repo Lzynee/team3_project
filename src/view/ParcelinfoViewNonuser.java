@@ -8,7 +8,7 @@ public class ParcelinfoViewNonuser implements CommonView {
 
 	private static ParcelinfoViewNonuser view = new ParcelinfoViewNonuser();
 
-	public void info(String nonUserCp) {
+	public void info(String nonUserCp,String parcelName) {
 
 		ParcelDao pdao = new ParcelDao();
 		int width = 0;
@@ -17,7 +17,7 @@ public class ParcelinfoViewNonuser implements CommonView {
 		int cost = 0;
 		int mass = 0;
 
-		String parcelName = "";
+
 		String volume = "";
 		
 		try {
