@@ -22,15 +22,6 @@ public class ParcelinfoView implements CommonView {
 			while (true) {
 
 				// 화면 출력
-				System.out.println();
-				System.out.println("-----------------------------------------------------");
-				System.out.println();
-				System.out.println("                   [ 상품 정보 입력창 ]");
-				System.out.println();
-				System.out.println("-----------------------------------------------------");
-				System.out.print("상품명 (10 글자 제한) : ");
-				parcelName = scan.nextLine();
-				System.out.println();
 				System.out.println("-----------------------------------------------------");
 				System.out.println();
 				// 무게 => 수량 , 크기 => 사이즈로 문장 변경
@@ -131,7 +122,7 @@ public class ParcelinfoView implements CommonView {
 
 	public static void main(String[] args) {
 		SuperDao.Load();
-		view.info(null);
+		view.info(null, null);
 		SuperDao.close();
 	}
 
