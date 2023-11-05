@@ -338,27 +338,27 @@ public class WaybillDao {
 //	}
 
 //  택배회사 관련 변수는 사용하지 않을 예정으로 임시 주석 처리 === (Nov.05. 이양진)
-//	public String selectCompanyByName(String companyCd) {
-//
-//		String name = null;
-//
-//		try {
-//			Connection conn = SuperDao.getConnection();
-//			String sql = "select * from company where company_cd = ?";
-//
-//			PreparedStatement stmt = conn.prepareStatement(sql);
-//			stmt.setString(1, companyCd);
-//			ResultSet re = stmt.executeQuery();
-//			while (re.next()) {
-//				name = re.getString("company_name");
-//			}
-//			re.close();
-//			stmt.close();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//
-//		return name;
-//	}
+	public String selectCompanyByName(String companyCd) {
+
+		String name = null;
+
+		try {
+			Connection conn = SuperDao.getConnection();
+			String sql = "select * from company where company_cd = ?";
+
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, companyCd);
+			ResultSet re = stmt.executeQuery();
+			while (re.next()) {
+				name = re.getString("company_name");
+			}
+			re.close();
+			stmt.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return name;
+	}
 
 }
