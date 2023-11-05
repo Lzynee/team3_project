@@ -93,7 +93,7 @@ public class WaybillView implements CommonView  {
 			System.out.println();
 			System.out.println("┌--------------------------------------------------------------------------┐");
 //			택배회사 관련 변수를 사용하는 라인 === (Nov.05. 이양진)
-			System.out.printf("| 주문번호 : %-52s |\n", wb.getWaybillNo() , wb.getCompanyName());
+			System.out.printf("| 주문번호 : %-38s  택배회사 : %-10s |\n", wb.getWaybillNo() , wb.getCompanyName());
 			System.out.println("|--------------------------------------------------------------------------|");
 			System.out.printf("| 보내는사람 : %-20s  보내는사람 전화번호: %-16s |\n", Sname, Scp);
 			System.out.printf("| 보내는사람 주소 : %-50s | \n","( " + Szipcode+" ) " + Saddr + " " + SDetailAddr);
