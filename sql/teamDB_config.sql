@@ -84,6 +84,20 @@ create table user_address(
 	rcvr_cp varchar(20) not null comment '받는사람 전화번호'
 );
 
+--- 주문 내역 조회 리스트 생성을 위한 테이블 추가 === (Nov.5 이양진)
+CREATE TABLE purchase_history(
+	`user_id` varchar(15) comment '회원 ID',
+    `non_name` VARCHAR(10) NOT NULL COMMENT '비회원 성함',
+    `waybill_no` varchar(10) not null comment '운송장 번호',
+    `parcel_name` varchar(10) NOT NULL comment '택배 명',
+    `parcel_size` varchar(15) comment '택배 크기',
+    `parcel_fee` int(10) comment '요금',
+	PRIMARY KEY(`user_id`),
+    FOREIGN KEY(`waybill_no`) REFERENCES waybill(`waybill_no`) on DELETE CASCADE
+);
+--- 
+
+
 -- data3.txt 각자 경로로 설정
 load data local infile 'D:\\project_data\\team3\\sql\\data3.txt' into table sigugun fields terminated BY '\t' lines terminated by '\n';
 
