@@ -41,7 +41,7 @@ public class ParcelinfoView implements CommonView {
 				System.out.println("-----------------------------------------------------");
 
 				// 수량별 요금 계산
-				// 로직 변경 ( 이창규 )
+				// 출력 문구 로직 변경 ( 이창규 )
 				while (true) {
 					System.out.print("수량(개) : ");
 					mass = Integer.parseInt(scan.nextLine());
@@ -59,12 +59,13 @@ public class ParcelinfoView implements CommonView {
 				
 				cost = costs(mass);
 
-				// 규격 확인
+				// 사이즈 선택 과정
+				// 출력 문구 로직 변경 ( 이창규 )
 
 				while (true) {
 					
 					System.out.println();
-					System.out.println("크기를 입력해 주세요.");
+					System.out.println("사이즈를 선택해 주세요.");
 					System.out.println();
 					System.out.print("가로(cm) : ");
 					width = Integer.parseInt(scan.nextLine());

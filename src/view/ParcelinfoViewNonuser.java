@@ -43,13 +43,14 @@ public class ParcelinfoViewNonuser implements CommonView {
 				System.out.println(" 무게와 크기를 입력해 주세요");
 				System.out.println();
 
-				// 무게당 요금 계산
+				// 수량별 요금 계산
+				// 로직 변경 ( 이창규 )
 				while (true) {
-					System.out.print("무게(kg) : ");
+					System.out.print("수량(개) : ");
 					mass = Integer.parseInt(scan.nextLine());
 
-					if (mass > 20) {
-						System.out.println("20kg 초과는 보낼수 없습니다.");
+					if (mass < 1) {
+						System.out.println("수량을 확인하여 다시 입력해주세요.");
 						continue;
 					}
 					break;
