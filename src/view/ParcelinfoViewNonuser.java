@@ -23,17 +23,6 @@ public class ParcelinfoViewNonuser implements CommonView {
 		try {
 			// 화면 출력
 			while (true) {
-				System.out.println();
-				System.out.println("-----------------------------------------------------");
-				System.out.println();
-				System.out.println("                    [ 상품 정보 입력창 ]");
-				System.out.println();
-				System.out.println("-----------------------------------------------------");
-				System.out.println();
-				System.out.print("상품명 (10 글자 제한) : ");
-				parcelName = scan.nextLine();
-				
-				System.out.println();
 				System.out.println("-----------------------------------------------------");
 				System.out.println();
 				System.out.println("                     [무게 및 크기 측정]");
