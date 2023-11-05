@@ -69,7 +69,7 @@ public class WaybillView implements CommonView  {
 			// 택배 중량 크기 내용물
 			String pSize = parcel.getParcelSize();
 			String pName = parcel.getParcelName();
-//			parcel의 크기 관련 변수 주석 처리 === (13:21 이양진)
+//			parcel의 크기 관련 변수 주석 처리 === (Nov.05. 이양진)
 //			int pWeight = parcel.getParcelWeight();
 			// 택배 접수일(발송일)
 	        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
@@ -79,19 +79,20 @@ public class WaybillView implements CommonView  {
 		        date = new Date();
 //		        String nowTime1 = sdf1.format(date);
 			}
-			
-			if(wb.getCompanyName() == null)
-			{
-				wb.setCompanyName(wDao.selectCompanyByName(wb.getCompanyCd()));
-			}
+
+//			택배회사 관련 변수는 사용하지 않으므로 임시 주석 처리 === (Nov.05. 이양진)
+//			if(wb.getCompanyName() == null)
+//			{
+//				wb.setCompanyName(wDao.selectCompanyByName(wb.getCompanyCd()));
+//			}
 
 			// 영수증 정보 출력
 			System.out.println();
-//			'영수증 출력'이 두 줄 출력되던 문제 수정 === (14:04 이양진)
+//			'영수증 출력'이 두 줄 출력되던 문제 수정 === (Nov.05. 이양진)
 			System.out.println("                               영 수 증    출 력");
 			System.out.println();
 			System.out.println("┌--------------------------------------------------------------------------┐");
-//			택배회사 이름 부분이 출력되지 않도록 삭제 및 관련 변수 주석 처리 === (13:22 이양진)
+//			택배회사 이름 부분이 출력되지 않도록 삭제 및 관련 변수 주석 처리 === (Nov.05. 이양진)
 			System.out.printf("| 주문번호 : %-52s |\n", wb.getWaybillNo() /*, wb.getCompanyName()*/);
 			System.out.println("|--------------------------------------------------------------------------|");
 			System.out.printf("| 보내는사람 : %-20s  보내는사람 전화번호: %-16s |\n", Sname, Scp);
@@ -100,7 +101,7 @@ public class WaybillView implements CommonView  {
 			System.out.printf("| 받는사람 : %-20s    받는사람 전화번호: %-16s |\n", Rname, /*Rcp*/"000-0000-0000");
 			System.out.printf("| 받는사람 주소 : %-50s |\n","( " + /*Rzipcode*/"12410" + " ) " + Raddr + " " + RDetailAddr);
 			System.out.println("|--------------------------------------------------------------------------|");
-//			상품 크기가 상품명 옆에 표시되도록 위치 이동 및 상품 무게 표시 라인 주석 처리 === (13:24 이양진)
+//			상품 크기가 상품명 옆에 표시되도록 위치 이동 및 상품 무게 표시 라인 주석 처리 === (Nov. 05. 이양진)
 			System.out.printf("| 상품명 : %-50s |\n", pName, "(" +  pSize + ")");
 //			System.out.printf("| 상품 무게 : %-20d  \t   |\n"/*, pWeight*/, pSize);
 			System.out.println("|--------------------------------------------------------------------------|");
@@ -131,7 +132,8 @@ public class WaybillView implements CommonView  {
 				WaybillDao wbDao = new WaybillDao();
 				ParcelDao pDao = new ParcelDao();
 				UserView userV = new UserView();
-				
+
+//				주문 내역 조회 시 바로 회원 / 비회원 로그인 창으로 넘어가도록 해당 라인을 주석 처리함. === (Nov.05. 이양진)
 				System.out.println("-----------------------------------------------------");
 				System.out.println();
 				System.out.println("                    [ 주문 접수 조회 메뉴 ]");
@@ -160,7 +162,7 @@ public class WaybillView implements CommonView  {
 						System.out.println();
 						System.out.println("        로그인에 성공하셨습니다. 메뉴를 선택해 주십시오.");
 						System.out.println();
-						System.out.println(" 1. 재출력  2. 삭제");
+						System.out.println(" 1. 주문 내역 확인  2. 삭제");
 						System.out.println("-----------------------------------------------------");
 						System.out.print(" 메뉴 선택 : ");
 						String menuNum = scan.nextLine();
@@ -178,10 +180,11 @@ public class WaybillView implements CommonView  {
 							System.out.println("-----------------------------------------------------");
 							break;
 						}
+//						회원 주문내역 조회 실패 시 안내 메시지 수정 === (Nov.05. 이양진)
 					} else if (userId != "fail") {
 						System.out.println("-----------------------------------------------------");
 						System.out.println();
-						System.out.println("               해당 계정의 송장이 아닙니다.");
+						System.out.println("               해당 상품을 구매한 내역을 찾을 수 없습니다.");
 						System.out.println();
 						System.out.println("-----------------------------------------------------");
 						break;
@@ -194,7 +197,8 @@ public class WaybillView implements CommonView  {
 						break;
 					}
 
-//					비회원 주문내역 조회 시 출력 문구 수정 === (14:57 이양진)
+//					비회원 주문내역 조회 시 출력 문구 수정 === (Nov.05. 이양진)
+//					전화번호 입력 조건('- 없이 입력하세요')을 삭제 === (Nov.05. 이양진)
 				} else { // 영수증이 비회원으로 접수 되었을때
 					// 핸드폰 번호를 입력하고 해당 영수증번호와 핸드폰 번호가 같을 경우 채출력 및 접수 취소를 시킨다.
 					System.out.println("-----------------------------------------------------");
@@ -202,7 +206,7 @@ public class WaybillView implements CommonView  {
 					System.out.println("해당 기능을 사용하시려면 해당 상품을 구매할 때 사용하신 전화번호를 입력하셔야 합니다.");
 					System.out.println();
 					System.out.println("-----------------------------------------------------");
-					System.out.print("전화 번호 입력(- 없이 입력해주세요) : ");
+					System.out.print("전화 번호 입력 : ");
 					String inputNonCp = scan.nextLine();
 					if (inputNonCp.equals(wb.getNonCp())) {
 						System.out.println();
