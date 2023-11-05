@@ -2,6 +2,7 @@
 -- 작성자 : 이창규
 -- 수정일시 : 2023-11-04
 
+
 DROP TABLE  if exists user;
 DROP TABLE  if exists nonuser;
 DROP TABLE  if exists waybill;
@@ -96,6 +97,30 @@ CREATE TABLE purchase_history(
     FOREIGN KEY(`waybill_no`) REFERENCES waybill(`waybill_no`) on DELETE CASCADE
 );
 --- 
+
+--- company DB 추가 === (11/5 차소영 수정)
+
+insert into company values('01', 'CJ대한통운');
+insert into company values('02', '롯데택배');
+insert into company values('03', '우체국택배');
+insert into company values('04', '로젠택배');
+insert into company values('05', '한진택배');
+insert into company values('06', 'CU 편의점택배');
+insert into company values('07', 'EMS 택배');
+insert into company values('08', '경동택배');
+insert into company values('09', '대신택배');
+insert into company values('10', 'DHL 택배');
+insert into company values('11', '하이택배');
+insert into company values('12', 'CVSnet 편의점택배');
+insert into company values('13', '합동택배');
+insert into company values('14', '천일택배');
+insert into company values('15', 'APEX 택배');
+insert into company values('16', '세방 택배');
+insert into company values('17', 'KGB택배');
+insert into company values('18', 'SLX 택배');
+insert into company values('19', '일양로지스');
+insert into company values('20', '홈픽택배');
+
 
 
 -- data3.txt 각자 경로로 설정
