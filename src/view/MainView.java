@@ -111,7 +111,7 @@ public class MainView {
 				if (sign != "fail") {
 					System.out.println("-----------------------------------------------------");
 					System.out.println();
-					System.out.println("                 회원 가입이 완료하셨습니다.");
+					System.out.println("                 회원 가입이 완료되었습니다."); //되셨습니다->되었습니다 문구 수정(차소영, 11/5)
 					continue;
 				} else {
 					System.out.println("-----------------------------------------------------");
