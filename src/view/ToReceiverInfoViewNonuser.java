@@ -44,7 +44,6 @@ public class ToReceiverInfoViewNonuser implements CommonView{
 				String ReceiverDetailAddr = scan.nextLine();
 			
 				// 우편번호 찾기
-				// 집에서 zipcode() 불가!!!
 
 				int zipcode = getZipCode(ReceiverAddr);
 
