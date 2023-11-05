@@ -80,11 +80,11 @@ public class WaybillView implements CommonView  {
 //		        String nowTime1 = sdf1.format(date);
 			}
 
-//			택배회사 관련 변수는 사용하지 않으므로 임시 주석 처리 === (Nov.05. 이양진)
-//			if(wb.getCompanyName() == null)
-//			{
-//				wb.setCompanyName(wDao.selectCompanyByName(wb.getCompanyCd()));
-//			}
+//			택배회사 관련 변수 === (Nov.05. 이양진)
+			if(wb.getCompanyName() == null)
+			{
+				wb.setCompanyName(wDao.selectCompanyByName(wb.getCompanyCd()));
+			}
 
 			// 영수증 정보 출력
 			System.out.println();
@@ -92,14 +92,14 @@ public class WaybillView implements CommonView  {
 			System.out.println("                               영 수 증    출 력");
 			System.out.println();
 			System.out.println("┌--------------------------------------------------------------------------┐");
-//			택배회사 이름 부분이 출력되지 않도록 삭제 및 관련 변수 주석 처리 === (Nov.05. 이양진)
-			System.out.printf("| 주문번호 : %-52s |\n", wb.getWaybillNo() /*, wb.getCompanyName()*/);
+//			택배회사 관련 변수를 사용하는 라인 === (Nov.05. 이양진)
+			System.out.printf("| 주문번호 : %-52s |\n", wb.getWaybillNo() , wb.getCompanyName());
 			System.out.println("|--------------------------------------------------------------------------|");
 			System.out.printf("| 보내는사람 : %-20s  보내는사람 전화번호: %-16s |\n", Sname, Scp);
 			System.out.printf("| 보내는사람 주소 : %-50s | \n","( " + Szipcode+" ) " + Saddr + " " + SDetailAddr);
 			System.out.println("|--------------------------------------------------------------------------|");
-			System.out.printf("| 받는사람 : %-20s    받는사람 전화번호: %-16s |\n", Rname, /*Rcp*/"000-0000-0000");
-			System.out.printf("| 받는사람 주소 : %-50s |\n","( " + /*Rzipcode*/"12410" + " ) " + Raddr + " " + RDetailAddr);
+			System.out.printf("| 받는사람 : %-20s    받는사람 전화번호: %-16s |\n", Rname, Rcp);
+			System.out.printf("| 받는사람 주소 : %-50s |\n","( " + Rzipcode + " ) " + Raddr + " " + RDetailAddr);
 			System.out.println("|--------------------------------------------------------------------------|");
 //			상품 크기가 상품명 옆에 표시되도록 위치 이동 및 상품 무게 표시 라인 주석 처리 === (Nov. 05. 이양진)
 			System.out.printf("| 상품명 : %-50s |\n", pName, "(" +  pSize + ")");
