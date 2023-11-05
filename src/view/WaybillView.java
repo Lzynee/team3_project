@@ -69,7 +69,8 @@ public class WaybillView implements CommonView  {
 			// 택배 중량 크기 내용물
 			String pSize = parcel.getParcelSize();
 			String pName = parcel.getParcelName();
-			int pWeight = parcel.getParcelWeight();
+//			parcel의 크기 관련 변수 주석 처리 === (13:21 이양진)
+//			int pWeight = parcel.getParcelWeight();
 			// 택배 접수일(발송일)
 	        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -86,22 +87,24 @@ public class WaybillView implements CommonView  {
 
 			// 영수증 정보 출력
 			System.out.println();
-			System.out.println("                               영 수 증    출 력");
+//			'영수증 출력'이 두 줄 출력되던 문제 수정 === (14:04 이양진)
 			System.out.println("                               영 수 증    출 력");
 			System.out.println();
 			System.out.println("┌--------------------------------------------------------------------------┐");
-			System.out.printf("| 영수증번호 : %-30s| 택배사 : %-12s\t   |\n", wb.getWaybillNo() , wb.getCompanyName());
+//			택배회사 이름 부분이 출력되지 않도록 삭제 및 관련 변수 주석 처리 === (13:22 이양진)
+			System.out.printf("| 주문번호 : %-52s |\n", wb.getWaybillNo() /*, wb.getCompanyName()*/);
 			System.out.println("|--------------------------------------------------------------------------|");
-			System.out.printf("| 보내는사람 : %-20s  보내는사람 전화번호: %-16s\t   |\n", Sname, Scp);
-			System.out.printf("| 보내는사람 주소 : %-50s\t   |\n","( " + Szipcode+" ) " + Saddr + " " + SDetailAddr);
+			System.out.printf("| 보내는사람 : %-20s  보내는사람 전화번호: %-16s |\n", Sname, Scp);
+			System.out.printf("| 보내는사람 주소 : %-50s | \n","( " + Szipcode+" ) " + Saddr + " " + SDetailAddr);
 			System.out.println("|--------------------------------------------------------------------------|");
-			System.out.printf("| 받는사람 : %-20s    받는사람 전화번호: %-20s\t   |\n", Rname, Rcp);
-			System.out.printf("| 받는사람 주소 : %-50s\t   |\n","( " + Rzipcode + " ) " + Raddr + " " + RDetailAddr);
+			System.out.printf("| 받는사람 : %-20s    받는사람 전화번호: %-16s |\n", Rname, /*Rcp*/"000-0000-0000");
+			System.out.printf("| 받는사람 주소 : %-50s |\n","( " + /*Rzipcode*/"12410" + " ) " + Raddr + " " + RDetailAddr);
 			System.out.println("|--------------------------------------------------------------------------|");
-			System.out.printf("| 상품명 : %-50s\t\t   |\n", pName);
-			System.out.printf("| 상품 무게 : %-20d  상품 크기: %-25s\t   |\n", pWeight, pSize);
+//			상품 크기가 상품명 옆에 표시되도록 위치 이동 및 상품 무게 표시 라인 주석 처리 === (13:24 이양진)
+			System.out.printf("| 상품명 : %-50s |\n", pName, "(" +  pSize + ")");
+//			System.out.printf("| 상품 무게 : %-20d  \t   |\n"/*, pWeight*/, pSize);
 			System.out.println("|--------------------------------------------------------------------------|");
-			System.out.printf("|  %-30s| 요금 : %-10s |  %-10s\t   |\n", wb.getMsg(), wb.getTotalFee() ,sdf1.format(date) );
+			System.out.printf("|  %-30s| 요금 : %-10s |  %-10s |\n", wb.getMsg(), wb.getTotalFee() ,sdf1.format(date) );
 			System.out.println("└--------------------------------------------------------------------------┘");	
 			System.out.println();
 			System.out.println("                            이용해 주셔서 감사합니다.");
@@ -133,7 +136,7 @@ public class WaybillView implements CommonView  {
 				System.out.println();
 				System.out.println("                    [ 주문 접수 조회 메뉴 ]");
 				System.out.println();
-				System.out.println("조회할 송장의 송장번호를 입력해주세요.");
+				System.out.println("조회할 주문 내역의 주문 번호를 입력해주세요.");
 				System.out.println("-----------------------------------------------------");
 				System.out.print("영수증 번호 : ");
 				String wbNum = scan.nextLine();
@@ -191,11 +194,12 @@ public class WaybillView implements CommonView  {
 						break;
 					}
 
+//					비회원 주문내역 조회 시 출력 문구 수정 === (14:57 이양진)
 				} else { // 영수증이 비회원으로 접수 되었을때
 					// 핸드폰 번호를 입력하고 해당 영수증번호와 핸드폰 번호가 같을 경우 채출력 및 접수 취소를 시킨다.
 					System.out.println("-----------------------------------------------------");
 					System.out.println();
-					System.out.println("해당 기능을 사용하시려면 해당 택배를 접수할 때 사용하신 전화번호를 입력하셔야 합니다.");
+					System.out.println("해당 기능을 사용하시려면 해당 상품을 구매할 때 사용하신 전화번호를 입력하셔야 합니다.");
 					System.out.println();
 					System.out.println("-----------------------------------------------------");
 					System.out.print("전화 번호 입력(- 없이 입력해주세요) : ");
