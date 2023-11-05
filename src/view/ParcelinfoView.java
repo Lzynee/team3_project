@@ -130,7 +130,7 @@ public class ParcelinfoView implements CommonView {
 
 	public static void main(String[] args) {
 		SuperDao.Load();
-		view.info(null);
+		view.info(null, null);
 		SuperDao.close();
 	}
 
