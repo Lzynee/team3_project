@@ -77,7 +77,7 @@ public class ToReceiverInfoView implements CommonView {
 							System.out.println("-----------------------------------------------------");
 							System.out.println();
 							System.out.println("  이름 : " + list.get(num - 1).getRcvrName() + "\n  주소 : "
-									+ list.get(num - 1).getRcvrAddr() + "\n  전화 번호 : " + list.get(num - 1).getRcvrCp()+" "+list.get(num-1).getRcvrDetailAddr());
+									+ list.get(num - 1).getRcvrAddr()+" "+list.get(num-1).getRcvrDetailAddr() + "\n  전화 번호 : " + list.get(num - 1).getRcvrCp());
 							System.out.println();
 							System.out.println("  이 받는 사람 정보가 맞습니까?");
 							System.out.println();

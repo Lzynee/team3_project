@@ -1,3 +1,6 @@
+-- 작성일시 : 2023-11-03
+-- 작성자 : 이창규
+-- 수정일시 : 2023-11-04
 
 DROP TABLE  if exists user;
 DROP TABLE  if exists nonuser;
@@ -6,6 +9,7 @@ DROP TABLE  if exists company;
 DROP TABLE  if exists parcel;
 DROP TABLE  if exists user_address;
 DROP TABLE  if exists sigugun;
+
 
 
 CREATE TABLE `user` (
@@ -19,6 +23,7 @@ CREATE TABLE `user` (
 	
 );
 
+use team;
 
 create table `nonuser` (
 	`non_cp` VARCHAR(20) not null comment '비회원 전화번호',
@@ -79,32 +84,18 @@ create table user_address(
 	rcvr_cp varchar(20) not null comment '받는사람 전화번호'
 );
 
-load data local infile 'D:\data3.txt' into table sigugun fields terminated BY '\t' lines terminated by '\n';
+-- data3.txt 각자 경로로 설정
+load data local infile 'D:\\project_data\\team3\\sql\\data3.txt' into table sigugun fields terminated BY '\t' lines terminated by '\n';
 
-insert into company values('01', 'CJ대한통운');
-insert into company values('02', '롯데택배');
-insert into company values('03', '우체국택배');
-insert into company values('04', '로젠택배');
-insert into company values('05', '한진택배');
-insert into company values('06', 'CU 편의점택배');
-insert into company values('07', 'EMS 택배');
-insert into company values('08', '경동택배');
-insert into company values('09', '대신택배');
-insert into company values('10', 'DHL 택배');
-insert into company values('11', '하이택배');
-insert into company values('12', 'CVSnet 편의점택배');
-insert into company values('13', '합동택배');
-insert into company values('14', '천일택배');
-insert into company values('15', 'APEX 택배');
-insert into company values('16', '세방 택배');
-insert into company values('17', 'KGB택배');
-insert into company values('18', 'SLX 택배');
-insert into company values('19', '일양로지스');
-insert into company values('20', '홈픽택배');
+use team;
+select * from nonuser;
 
 alter table waybill add foreign key(user_id) REFERENCES user( user_id);
 alter table waybill add foreign key(company_cd) REFERENCES company( company_cd);
 alter table user_address add foreign key(user_id) REFERENCES user( user_id);
-alter table parcel add foreign key(waybill_no) REFERENCES waybill( waybill_no);
-ALTER TABLE nonuser ADD PRIMARY KEY(non_cp);
-alter table nonuser add foreign key(non_cp) REFERENCES waybill( non_cp);
+alter table parcel add foreign key(waybill_no) REFERENCES waybill( waybill_no) ON DELETE CASCADE;
+-- 아래 sql문은 잘못 되었으므로 변경
+-- ALTER TABLE nonuser ADD PRIMARY KEY(non_cp);
+-- alter table nonuser add foreign key(non_cp) REFERENCES waybill( non_cp);
+alter table waybill add foreign key (non_cp) REFERENCES nonuser( non_cp);
+-- 변경 완료

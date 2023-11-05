@@ -72,8 +72,11 @@ public interface CommonView {
 			System.out.println();
 			System.out.println("                     [ 결    제 ]");
 			System.out.println();
-			System.out.println(" 무게별 요금 " + cost +"원과 지역별 요금 " + surcharge+"을 합쳐");
+			// 현재 cost로만 받아오고 있는데, ParcelinfoView에서 사이즈와 수량을 넘겨주고-> ToReceverInfoview가 받아야됨
+			System.out.println(" 사이즈별 요금 " + cost +"원과 지역별 요금 " + surcharge+"을 합쳐");
+			//System.out.println(" 사이즈별 요금 " + cost +"x"+ cnt +"원과 지역별 요금 " + surcharge+"을 합쳐");
 			System.out.println(" 총 요금은 " + (cost+surcharge)+"원 입니다.");
+			//System.out.println(" 총 요금은 " + (cost*cnt+surcharge)+"원 입니다.");
 			System.out.println();
 			System.out.println(" 1. 결제   2. 취소");
 			System.out.println("-----------------------------------------------------");
@@ -100,8 +103,11 @@ public interface CommonView {
 			System.out.println();
 			System.out.println("                      [ 결    제 ]");
 			System.out.println();
-			System.out.println(" 무게별 요금 " + cost +"원과 지역별 요금 " + surcharge+"을 합쳐");
+			// 현재 cost로만 받아오고 있는데, ParcelinfoView에서 사이즈와 수량을 넘겨주고-> ToReceverInfoview가 받아야됨
+			System.out.println(" 사이즈별 요금 " + cost +"원과 지역별 요금 " + surcharge+"을 합쳐");
+			//System.out.println(" 사이즈별 요금 " + cost +"x"+ cnt +"원과 지역별 요금 " + surcharge+"을 합쳐");
 			System.out.println(" 총 요금은 " + (cost+surcharge)+"원 입니다.");
+			//System.out.println(" 총 요금은 " + (cost*cnt+surcharge)+"원 입니다.");
 			if(discount == 200) {
 				System.out.println(" 또한 회원 님의 등급인 플래티넘 등급은 " + discount +"원 할인이 되므로");
 			} else if(discount == 500) {
