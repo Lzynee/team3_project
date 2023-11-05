@@ -9,7 +9,7 @@ public class OrderView implements CommonView {
 	private static OrderView view = new OrderView();
 
 	
-	public void order(String userId) {
+	public void order(String userIdOrCP, Boolean isUser) {
 
 		String productName = "";
 
@@ -79,10 +79,15 @@ public class OrderView implements CommonView {
 					continue;
 				}
 
-				//ParcelinfoView로 userId, productName넘겨줌
-				ParcelinfoView.getinstance().info(userId);
-				//ParcelinfoView.getinstance().info(userId, productName);
-				break;
+				if(isUser){
+				//ParcelinfoView로 userId나 nonusercp, productName넘겨줌
+					ParcelinfoView.getinstance().info(userIdOrCP);
+				//ParcelinfoView.getinstance().info(userIdOrCP, productName);
+					break;
+				}else{
+					ParcelinfoViewNonuser.getinstance().info(userIdOrCP);
+				}
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -93,7 +98,7 @@ public class OrderView implements CommonView {
 
 	public static void main(String[] args) {
 		SuperDao.Load();
-		view.order(null);
+		view.order(null,null);
 		SuperDao.close();
 	}
 

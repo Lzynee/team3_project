@@ -48,7 +48,7 @@ public class MainView {
 					System.out.println("                  로그인에 성공하셨습니다.");
 					System.out.println();
 
-					OrderView.getinstance().order(userId); //ParcelinfoView.getinstance().info(userId);
+					OrderView.getinstance().order(userId, true); //ParcelinfoView.getinstance().info(userId);
 				} else {
 					System.out.println("-----------------------------------------------------");
 					System.out.println();
@@ -66,7 +66,7 @@ public class MainView {
 					System.out.println("               비회원 로그인에 성공하셨습니다.");
 					System.out.println();
 
-					ParcelinfoViewNonuser.getinstance().info(nonusercp);
+					OrderView.getinstance().order(nonusercp, false);//ParcelinfoViewNonuser.getinstance().info(nonusercp);
 				} else {
 					System.out.println("-----------------------------------------------------");
 					System.out.println();
