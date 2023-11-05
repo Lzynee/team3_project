@@ -111,6 +111,17 @@ public class UserView implements CommonView{
 					System.out.println("                  다시 시도하여 주십시오.");
 					System.out.println();
 					continue;
+
+					//아이디가 15자 이상일 시 재입력 안내 문구 표출 (11/5 추가)
+				} else if (userid.length() > 15) {
+					System.out.println();
+					System.out.println("-----------------------------------------------------");
+					System.out.println();
+					System.out.println("                아이디는 15글자 이하여야 합니다.");
+					System.out.println("                  다시 시도하여 주십시오.");
+					System.out.println();
+					continue;
+
 				} else if(vo == null) {
 					break;
 				} else {
