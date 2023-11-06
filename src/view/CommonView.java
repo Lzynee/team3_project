@@ -143,11 +143,11 @@ public interface CommonView {
 		while (true) {
 
 			
-
+// 출력 메시지 일부 수정 === (Nov.06 이양진)
 			System.out.println("-----------------------------------------------------");
 			System.out.println("                      꽃배달 요청사항");
 			System.out.println();
-			System.out.println("      꽃배달 요청 사항을 선택하시면 바로 운송장 출력이 진행됩니다.");
+			System.out.println("      꽃배달 요청 사항을 선택하시면 바로 영수증이 출력됩니다.");
 			System.out.println();
 			System.out.println("\t      1. 선택 안함");
 			System.out.println("\t      2. 배송 전 연락주세요");

@@ -25,25 +25,22 @@ public class MainView {
 
 		while (true) {
 			//초기 배너 FLOWER 출력
-			int width = 130;
-			int height = 20;
+			//FLOWER 표출 문자 크기 조정 (11/6)
+			int width = 130 * 2 / 3;
+			int height = 20 * 2 / 3;
 
 			BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 			Graphics g = image.getGraphics();
-			g.setFont(new Font("SansSerif", Font.BOLD, 24));
+			g.setFont(new Font("SansSerif", Font.PLAIN, 15)); //FLOWER 글씨체 굵기 조절 (BOLD->PLAIN)
 
 			Graphics2D graphics = (Graphics2D) g;
-			graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
-					RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-			graphics.drawString("FLOWER", 10, 20);
-
+			graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+			graphics.drawString("FLOWER", 7, 13);
 
 			for (int y = 0; y < height; y++) {
 				StringBuilder sb = new StringBuilder();
-				for (int x = 0; x < width; x++) {
-
+				for (int x = 7; x < width; x++) {
 					sb.append(image.getRGB(x, y) == -16777216 ? " " : "$");
-
 				}
 
 				if (sb.toString().trim().isEmpty()) {
@@ -53,18 +50,20 @@ public class MainView {
 				System.out.println(sb);
 			}
 
-			System.out.println("-----------------------------------------------------");
+			//FLOWER 출력 문자와 맞추기 위한 띄어쓰기 간격 조정, '---' 추가 (11/6)
+			System.out.println("-----------------------------------------------------------------");
 			System.out.println();
-			System.out.println("                     [ 메인 메뉴 ]");
+			System.out.println("                           [ 메인 메뉴 ]");
 			System.out.println();
-			System.out.println("-----------------------------------------------------");
+			System.out.println("-----------------------------------------------------------------");
 			System.out.println();
-			System.out.printf("\t%-20s\t%-20s\n", "1. 서비스 접수(회원)", "2. 서비스 접수(비회원)");
+			System.out.printf("\t%-20s\t%-20s\n", " 1. 서비스 접수(회원)", "  2. 서비스 접수(비회원)");
 			System.out.println();
-			System.out.printf("\t%-20s\t%-20s\n", "3. 회원 가입", "4. 주문 접수 조회");
+			System.out.printf("\t%-20s\t%-60s\n", " 3. 회원 가입", "      4. 주문 접수 조회");
+			System.out.println();
 			System.out.println();
 			System.out.println("다른 숫자 입력시 종료됩니다.");
-			System.out.println("-----------------------------------------------------");
+			System.out.println("-----------------------------------------------------------------");
 
 			System.out.print("메뉴 선택 : ");
 			String menuNo = scan.nextLine();
@@ -112,6 +111,7 @@ public class MainView {
 					System.out.println("-----------------------------------------------------");
 					System.out.println();
 					System.out.println("                 회원 가입이 완료되었습니다."); //되셨습니다->되었습니다 문구 수정(차소영, 11/5)
+					System.out.println(); // 엔터 추가 (11/6 수정)
 					continue;
 				} else {
 					System.out.println("-----------------------------------------------------");
