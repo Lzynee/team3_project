@@ -8,6 +8,9 @@ import dao.SuperDao;
 import model.User;
 
 public class MainView {
+	public static final String RESET = "\u001B[0m";
+	public static final String BACKGROUND_YELLOW = "\u001B[43m";
+	public static final String FONT_BLACK = "\u001b[30m"; // 가입 완료 문구 컬러 변경을 위한 변수 선언
 
 
 	public static void exit() {
@@ -110,8 +113,11 @@ public class MainView {
 				if (sign != "fail") {
 					System.out.println("-----------------------------------------------------");
 					System.out.println();
-					System.out.println("                 회원 가입이 완료되었습니다."); //되셨습니다->되었습니다 문구 수정(차소영, 11/5)
+					System.out.println(BACKGROUND_YELLOW + FONT_BLACK + "-------------  회원 가입이 완료되었습니다   --------------" + RESET); //되셨습니다->되었습니다 문구 수정(차소영, 11/5)
+					//가입 완료 문구 컬러 변경 (11/6)
 					System.out.println(); // 엔터 추가 (11/6 수정)
+					System.out.println();
+					System.out.println();
 					continue;
 				} else {
 					System.out.println("-----------------------------------------------------");
