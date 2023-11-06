@@ -6,8 +6,8 @@ import lombok.Data;
 public class PurchaseHistory {
 
     private String UserId;
-    private String WaybillNo;
-    private String ParcelName;
-    private String ParcelSize;
-    private int ParcelFee;
+    private String billNo;
+    private String flwOptName;
+    private String flwOptSize;
+    private int flwOptFee;
 }

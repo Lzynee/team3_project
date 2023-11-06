@@ -1,13 +1,17 @@
--- 작성일시 : 2023-11-03
--- 작성자 : 이창규
+-- 최초 작성일시 : 2023-11-03
+-- 최초 작성자 : 이창규
 -- 수정일시 : 2023-11-04
+-- 수정일시 : 2023-11-06
+-- 작성자 : 이창규
+-- 
 
+use team;
 
 DROP TABLE  if exists user;
 DROP TABLE  if exists nonuser;
-DROP TABLE  if exists waybill;
+DROP TABLE  if exists bill;
 DROP TABLE  if exists company;
-DROP TABLE  if exists parcel;
+DROP TABLE  if exists flwOpt;
 DROP TABLE  if exists user_address;
 DROP TABLE  if exists sigugun;
 
@@ -24,8 +28,6 @@ CREATE TABLE `user` (
 	
 );
 
-use team;
-
 create table `nonuser` (
 	`non_cp` VARCHAR(20) not null comment '비회원 전화번호',
 	`non_name` VARCHAR(10) NOT NULL COMMENT '비회원 성함',
@@ -35,8 +37,8 @@ create table `nonuser` (
 	PRIMARY KEY (`non_cp`)
 );
 
-create table `waybill` (
-	`waybill_no` varchar(10) not null comment '운송장 번호',
+create table `bill` (
+	`bill_no` varchar(10) not null comment '주문 번호',
 	`rcvr_name` VARCHAR(10) not null comment '받는사람 이름',
 	`rcvr_addr` varchar(100) not null comment '받는사람 주소',
 	`rcvr_Daddr` varchar(30) not null comment '받는사람 상세주소',
@@ -48,7 +50,7 @@ create table `waybill` (
 	`total_fee` int(20) comment '최종 요금',
 	`up_date` DATETIME comment '받은날짜',
 	`msg` varchar(30) comment '요청사항',
-	 primary key (`waybill_no`)
+	 primary key (`bill_no`)
 );
 
 create table company(
@@ -57,14 +59,15 @@ create table company(
 	primary key (`company_cd`)
 );
 
-create table parcel(
-	`parcel_no` int(10) NOT NULL AUTO_INCREMENT  comment '택배 번호',
-	`parcel_name` varchar(10) NOT NULL comment '택배 명',
-	`parcel_weight` int(10) comment '택배 무게',
-	`parcel_size` varchar(15) comment '택배 크기',
-	`parcel_fee` int(10) comment '요금',
-	`waybill_no` VARCHAR(10) not null comment '운송장 번호',
-	 primary key (`parcel_no`)
+DROP table IF EXISTS flwOpt;
+create table flwOpt(
+	`flwOpt_no` int(10) NOT NULL AUTO_INCREMENT  comment '옵션 번호',
+	`flwOpt_name` varchar(10) NOT NULL comment '상품명',
+	`flwOpt_weight` int(10) comment '상품 무게',
+	`flwOpt_size` varchar(15) comment '상품 크기',
+	`flwOpt_fee` int(10) comment '요금',
+	`bill_no` VARCHAR(10) not null comment '주문 번호',
+	 primary key (`flwOpt_no`)
 );
 
 CREATE TABLE `sigugun` (
@@ -85,20 +88,22 @@ create table user_address(
 	rcvr_cp varchar(20) not null comment '받는사람 전화번호'
 );
 
---- 주문 내역 조회 리스트 생성을 위한 테이블 추가 === (Nov.5 이양진)
+-- 최초 작성자 : 이양진
+-- 작성 일시 : 2023.11.05
+-- 수정 : ( 2023.11.06 이창규 ) 
+DROP table IF EXISTS purchase_history;
 CREATE TABLE purchase_history(
 	`user_id` varchar(15) comment '회원 ID',
     `non_name` VARCHAR(10) NOT NULL COMMENT '비회원 성함',
-    `waybill_no` varchar(10) not null comment '운송장 번호',
-    `parcel_name` varchar(10) NOT NULL comment '택배 명',
-    `parcel_size` varchar(15) comment '택배 크기',
-    `parcel_fee` int(10) comment '요금',
+    `bill_no` varchar(10) not null comment '주문 번호',
+    `flwOpt_name` varchar(10) NOT NULL comment '상품명',
+    `flwOpt_size` varchar(15) comment '상품 크기',
+    `flwOpt_fee` int(10) comment '요금',
 	PRIMARY KEY(`user_id`),
-    FOREIGN KEY(`waybill_no`) REFERENCES waybill(`waybill_no`) on DELETE CASCADE
+    FOREIGN KEY(`bill_no`) REFERENCES bill(`bill_no`) on DELETE CASCADE
 );
---- 
 
---- company DB 추가 === (11/5 차소영 수정)
+-- company DB 추가 === (2023.11.05 차소영 수정)
 
 insert into company values('01', 'CJ대한통운');
 insert into company values('02', '롯데택배');
@@ -121,20 +126,13 @@ insert into company values('18', 'SLX 택배');
 insert into company values('19', '일양로지스');
 insert into company values('20', '홈픽택배');
 
-
-
 -- data3.txt 각자 경로로 설정
 load data local infile 'D:\\project_data\\team3\\sql\\data3.txt' into table sigugun fields terminated BY '\t' lines terminated by '\n';
 
-use team;
-select * from nonuser;
 
-alter table waybill add foreign key(user_id) REFERENCES user( user_id);
-alter table waybill add foreign key(company_cd) REFERENCES company( company_cd);
+-- 관계 설정
+alter table bill add foreign key(user_id) REFERENCES user( user_id);
+alter table bill add foreign key(company_cd) REFERENCES company( company_cd);
 alter table user_address add foreign key(user_id) REFERENCES user( user_id);
-alter table parcel add foreign key(waybill_no) REFERENCES waybill( waybill_no) ON DELETE CASCADE;
--- 아래 sql문은 잘못 되었으므로 변경
--- ALTER TABLE nonuser ADD PRIMARY KEY(non_cp);
--- alter table nonuser add foreign key(non_cp) REFERENCES waybill( non_cp);
-alter table waybill add foreign key (non_cp) REFERENCES nonuser( non_cp);
--- 변경 완료
+alter table flwOpt add foreign key(bill_no) REFERENCES bill(bill_no) ON DELETE CASCADE;
+alter table bill add foreign key (non_cp) REFERENCES nonuser( non_cp);

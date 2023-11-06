@@ -2,7 +2,7 @@ package view;
 
 import java.util.Scanner;
 
-import dao.WaybillDao;
+import dao.BillDao;
 
 public interface CommonView {
 
@@ -38,27 +38,27 @@ public interface CommonView {
 	public default int getZipCode(String line) {
 
 		String[] strToStrArray = line.split(" ");
-		WaybillDao wdao = new WaybillDao();
+		BillDao bDao = new BillDao();
 		int zipcode = 0;
 
 		// 가평군 등의 '군'의 경우
 		if (strToStrArray.length == 4) {
 			String[] numTobunum = strToStrArray[3].split("-"); // 지역번호,부번호 나누기
 			if (numTobunum.length >= 2)  //부번호가 있을때
-				zipcode = wdao.selectzipcode(strToStrArray[0], strToStrArray[1], strToStrArray[2],
+				zipcode = bDao.selectzipcode(strToStrArray[0], strToStrArray[1], strToStrArray[2],
 						Integer.parseInt(numTobunum[0]), Integer.parseInt(numTobunum[1]));
 			else //부번호가 없을때
-				zipcode = wdao.selectzipcode(strToStrArray[0], strToStrArray[1], strToStrArray[2],
+				zipcode = bDao.selectzipcode(strToStrArray[0], strToStrArray[1], strToStrArray[2],
 						Integer.parseInt(numTobunum[0]));
 
 		} 
 		else { 	// 안산시 등의 '시'의 경우
 			String[] numTobunum = strToStrArray[4].split("-"); // 지역번호,부번호 나누기
 			if (numTobunum.length >= 2) //부번호가 있을때
-				zipcode = wdao.selectzipcode(strToStrArray[0], strToStrArray[1] + " " + strToStrArray[2],
+				zipcode = bDao.selectzipcode(strToStrArray[0], strToStrArray[1] + " " + strToStrArray[2],
 						strToStrArray[3], Integer.parseInt(numTobunum[0]), Integer.parseInt(numTobunum[1]));
 			else //부번호가 없을때
-				zipcode = wdao.selectzipcode(strToStrArray[0], strToStrArray[1] + " " + strToStrArray[2],
+				zipcode = bDao.selectzipcode(strToStrArray[0], strToStrArray[1] + " " + strToStrArray[2],
 						strToStrArray[3], Integer.parseInt(numTobunum[0]));
 		}
 
@@ -73,7 +73,7 @@ public interface CommonView {
 			System.out.println();
 			System.out.println("                     [ 결    제 ]");
 			System.out.println();
-			// 현재 cost로만 받아오고 있는데, ParcelinfoView에서 사이즈와 수량을 넘겨주고-> ToReceverInfoview가 받아야됨
+			// 현재 cost로만 받아오고 있는데, flwoptinfoView에서 사이즈와 수량을 넘겨주고-> ToReceverInfoview가 받아야됨
 			System.out.println(" 사이즈별 요금 " + cost +"원과 지역별 요금 " + surcharge+"을 합쳐");
 			//System.out.println(" 사이즈별 요금 " + cost +"x"+ cnt +"원과 지역별 요금 " + surcharge+"을 합쳐");
 			System.out.println(" 총 요금은 " + (cost+surcharge)+"원 입니다.");
@@ -104,7 +104,7 @@ public interface CommonView {
 			System.out.println();
 			System.out.println("                      [ 결    제 ]");
 			System.out.println();
-			// 현재 cost로만 받아오고 있는데, ParcelinfoView에서 사이즈와 수량을 넘겨주고-> ToReceverInfoview가 받아야됨
+			// 현재 cost로만 받아오고 있는데, flwoptinfoView에서 사이즈와 수량을 넘겨주고-> ToReceverInfoview가 받아야됨
 			System.out.println(" 사이즈별 요금 " + cost +"원과 지역별 요금 " + surcharge+"을 합쳐");
 			//System.out.println(" 사이즈별 요금 " + cost +"x"+ cnt +"원과 지역별 요금 " + surcharge+"을 합쳐");
 			System.out.println(" 총 요금은 " + (cost+surcharge)+"원 입니다.");

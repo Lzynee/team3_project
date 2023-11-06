@@ -79,7 +79,7 @@ public class MainView {
 					System.out.println("                  로그인에 성공하셨습니다.");
 					System.out.println();
 
-					OrderView.getinstance().order(userId, true); //ParcelinfoView.getinstance().info(userId);
+					OrderView.getinstance().order(userId, true); //flwoptinfoView.getinstance().info(userId);
 				} else {
 					System.out.println("-----------------------------------------------------");
 					System.out.println();
@@ -97,7 +97,7 @@ public class MainView {
 					System.out.println("               비회원 로그인에 성공하셨습니다.");
 					System.out.println();
 
-					OrderView.getinstance().order(nonusercp, false);//ParcelinfoViewNonuser.getinstance().info(nonusercp);
+					OrderView.getinstance().order(nonusercp, false);//flwoptinfoViewNonuser.getinstance().info(nonusercp);
 				} else {
 					System.out.println("-----------------------------------------------------");
 					System.out.println();
@@ -122,7 +122,7 @@ public class MainView {
 
 			} else if ("4".equals(menuNo)) {
 				// 주문접수 조회 기능
-				WaybillView.getinstance().wbList();
+				BillView.getinstance().wbList();
 				continue;
 			} else {
 				SuperDao.close();

@@ -1,8 +1,6 @@
 package view;
 
-import dao.ParcelDao;
 import dao.SuperDao;
-import model.Parcel;
 
 public class OrderView implements CommonView {
 
@@ -80,12 +78,12 @@ public class OrderView implements CommonView {
 				}
 
 				if(isUser){
-				//ParcelinfoView로 userId나 nonusercp, productName넘겨줌
-					//ParcelinfoView.getinstance().info(userIdOrCP);
-					ParcelinfoView.getinstance().info(userIdOrCP, productName);
+				//flwoptinfoView로 userId나 nonusercp, productName넘겨줌
+					//flwoptinfoView.getinstance().info(userIdOrCP);
+					FlwOptinfoView.getinstance().info(userIdOrCP, productName);
 					break;
 				}else{
-					ParcelinfoViewNonuser.getinstance().info(userIdOrCP, productName);
+					FlwOptinfoViewNonuser.getinstance().info(userIdOrCP, productName);
 				}
 
 			}
