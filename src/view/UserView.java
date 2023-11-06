@@ -111,6 +111,17 @@ public class UserView implements CommonView{
 					System.out.println("                  다시 시도하여 주십시오.");
 					System.out.println();
 					continue;
+
+					//아이디가 15자 이상일 시 재입력 안내 문구 표출 (11/5 추가)
+				} else if (userid.length() > 15) {
+					System.out.println();
+					System.out.println("-----------------------------------------------------");
+					System.out.println();
+					System.out.println("                아이디는 15글자 이하여야 합니다.");
+					System.out.println("                  다시 시도하여 주십시오.");
+					System.out.println();
+					continue;
+
 				} else if(vo == null) {
 					break;
 				} else {
@@ -244,8 +255,19 @@ public class UserView implements CommonView{
 			
 
 			User user = new User();
-			
-			System.out.println(userid + " " +username + " " +useraddr + " " );
+
+			//가입 완료 후 입력한 정보가 한 줄로 뜨는 화면 문구 수정 (차소영, 11/6)
+			System.out.println("-----------------------------------------------------");
+			System.out.println();
+			System.out.println("             ○  입력하신 가입 정보입니다  ○");
+			System.out.println();
+			System.out.println("    I       D : " + userid);
+			System.out.println("    이      름 : " + username);
+			System.out.println("    전 화 번 호 : " + usercp);
+			System.out.println("    주      소 : " + useraddr);
+			System.out.println("    상 세 주 소 : " + userDaddr);
+			System.out.println();
+			System.out.println();
 			
 			user.setUserId(userid);
 			user.setUserPwd(userpw);

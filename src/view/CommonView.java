@@ -15,7 +15,8 @@ public interface CommonView {
 
 	// 작성자 : 강철구
 	// 작성일자 : 2023-05-25
-	//설명 : 요금 계산 
+	//설명 : 요금 계산
+	// 조건 변경에 따른 로직 변경 필요 ( 이창규 )
 	public default int costs(int mass)
 	{
 		int cost = 0;
@@ -27,9 +28,9 @@ public interface CommonView {
 			cost = 7500;
 		} else if (mass <= 20) {
 			cost = 8500;
-		} 
+		}
 		return cost;
-	}	
+	}
 
 	// 작성자 : 명지완
 	// 작성일자 : 2023-05-25

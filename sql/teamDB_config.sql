@@ -2,6 +2,7 @@
 -- 작성자 : 이창규
 -- 수정일시 : 2023-11-04
 
+
 DROP TABLE  if exists user;
 DROP TABLE  if exists nonuser;
 DROP TABLE  if exists waybill;
@@ -83,6 +84,44 @@ create table user_address(
 	rcvr_Daddr varchar(30) not null comment '받는사람 상세주소',
 	rcvr_cp varchar(20) not null comment '받는사람 전화번호'
 );
+
+--- 주문 내역 조회 리스트 생성을 위한 테이블 추가 === (Nov.5 이양진)
+CREATE TABLE purchase_history(
+	`user_id` varchar(15) comment '회원 ID',
+    `non_name` VARCHAR(10) NOT NULL COMMENT '비회원 성함',
+    `waybill_no` varchar(10) not null comment '운송장 번호',
+    `parcel_name` varchar(10) NOT NULL comment '택배 명',
+    `parcel_size` varchar(15) comment '택배 크기',
+    `parcel_fee` int(10) comment '요금',
+	PRIMARY KEY(`user_id`),
+    FOREIGN KEY(`waybill_no`) REFERENCES waybill(`waybill_no`) on DELETE CASCADE
+);
+--- 
+
+--- company DB 추가 === (11/5 차소영 수정)
+
+insert into company values('01', 'CJ대한통운');
+insert into company values('02', '롯데택배');
+insert into company values('03', '우체국택배');
+insert into company values('04', '로젠택배');
+insert into company values('05', '한진택배');
+insert into company values('06', 'CU 편의점택배');
+insert into company values('07', 'EMS 택배');
+insert into company values('08', '경동택배');
+insert into company values('09', '대신택배');
+insert into company values('10', 'DHL 택배');
+insert into company values('11', '하이택배');
+insert into company values('12', 'CVSnet 편의점택배');
+insert into company values('13', '합동택배');
+insert into company values('14', '천일택배');
+insert into company values('15', 'APEX 택배');
+insert into company values('16', '세방 택배');
+insert into company values('17', 'KGB택배');
+insert into company values('18', 'SLX 택배');
+insert into company values('19', '일양로지스');
+insert into company values('20', '홈픽택배');
+
+
 
 -- data3.txt 각자 경로로 설정
 load data local infile 'D:\\project_data\\team3\\sql\\data3.txt' into table sigugun fields terminated BY '\t' lines terminated by '\n';

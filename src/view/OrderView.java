@@ -81,11 +81,11 @@ public class OrderView implements CommonView {
 
 				if(isUser){
 				//ParcelinfoView로 userId나 nonusercp, productName넘겨줌
-					ParcelinfoView.getinstance().info(userIdOrCP);
-				//ParcelinfoView.getinstance().info(userIdOrCP, productName);
+					//ParcelinfoView.getinstance().info(userIdOrCP);
+					ParcelinfoView.getinstance().info(userIdOrCP, productName);
 					break;
 				}else{
-					ParcelinfoViewNonuser.getinstance().info(userIdOrCP);
+					ParcelinfoViewNonuser.getinstance().info(userIdOrCP, productName);
 				}
 
 			}
