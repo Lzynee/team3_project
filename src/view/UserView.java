@@ -255,8 +255,19 @@ public class UserView implements CommonView{
 			
 
 			User user = new User();
-			
-			System.out.println(userid + " " +username + " " +useraddr + " " );
+
+			//가입 완료 후 입력한 정보가 한 줄로 뜨는 화면 문구 수정 (차소영, 11/6)
+			System.out.println("-----------------------------------------------------");
+			System.out.println();
+			System.out.println("             ○  입력하신 가입 정보입니다  ○");
+			System.out.println();
+			System.out.println("    I       D : " + userid);
+			System.out.println("    이      름 : " + username);
+			System.out.println("    전 화 번 호 : " + usercp);
+			System.out.println("    주      소 : " + useraddr);
+			System.out.println("    상 세 주 소 : " + userDaddr);
+			System.out.println();
+			System.out.println();
 			
 			user.setUserId(userid);
 			user.setUserPwd(userpw);
