@@ -50,6 +50,7 @@ public class MainView {
 				System.out.println(sb);
 			}
 
+			//FLOWER 출력 문자와 맞추기 위한 띄어쓰기 간격 조정, '---' 추가 (11/6)
 			System.out.println("-----------------------------------------------------------------");
 			System.out.println();
 			System.out.println("                           [ 메인 메뉴 ]");
