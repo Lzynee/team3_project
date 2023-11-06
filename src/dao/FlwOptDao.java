@@ -73,7 +73,38 @@ public class FlwOptDao {
 		return vo;
 	}
 
-	
+	public List<FlwOpt> selectWaybillNoList(String waybillNo) {
+		FlwOpt vo = null;
+		List<FlwOpt> list = new ArrayList<>();
+
+		try {
+			Connection conn = SuperDao.getConnection();
+			String sql = "select flwOpt_no, flwOpt_name, flwOpt_weight, flwOpt_size, flwOpt_fee, f.bill_no " +
+							"from Bill as wb " +
+							"join flwOpt as f on wb.bill_no= f.bill_no and wb.user_id = ?;";
+
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, waybillNo);
+			ResultSet re = stmt.executeQuery();
+			while (re.next()) {
+				vo = new FlwOpt();
+				vo.setFlwOptNo(re.getInt("flwOpt_no"));
+				vo.setFlwOptName(re.getString("flwOpt_name"));
+				vo.setFlwOptWeight(re.getInt("flwOpt_weight"));
+				vo.setFlwOptSize(re.getString("flwOpt_size"));
+				vo.setFlwOptFee(re.getInt("flwOpt_fee"));
+				vo.setBillNo(re.getString("bill_no"));
+				list.add(vo);
+			}
+			re.close();
+			stmt.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+
+		return list;
+	}
 	public FlwOpt selectBillNo(String billNo) {
 
 		FlwOpt vo = null;

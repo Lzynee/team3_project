@@ -122,7 +122,7 @@ public class MainView {
 
 			} else if ("4".equals(menuNo)) {
 				// 주문접수 조회 기능
-				BillView.getinstance().wbList();
+				ItemView.getinstance().phList();
 				continue;
 			} else {
 				SuperDao.close();
