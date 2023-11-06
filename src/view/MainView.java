@@ -112,6 +112,7 @@ public class MainView {
 					System.out.println("-----------------------------------------------------");
 					System.out.println();
 					System.out.println("                 회원 가입이 완료되었습니다."); //되셨습니다->되었습니다 문구 수정(차소영, 11/5)
+					System.out.println(); // 엔터 추가 (11/6 수정)
 					continue;
 				} else {
 					System.out.println("-----------------------------------------------------");
