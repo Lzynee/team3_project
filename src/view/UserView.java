@@ -74,6 +74,34 @@ public class UserView implements CommonView{
 		return "fail";
 	}
 
+	public String Non_userlogin_check() {
+		try {
+			NonuserDao NuDao = new NonuserDao();
+
+			System.out.println("-----------------------------------------------------");
+			System.out.println();
+			System.out.println("                   [ 비회원 로그인 ]");
+			System.out.println();
+			System.out.println("-----------------------------------------------------");
+			System.out.println();
+			System.out.print(" 이   름\t: ");
+			String username = scan.nextLine();
+			System.out.println();
+			System.out.print(" 전화 번호\t: ");
+			String usercp = scan.nextLine();
+			System.out.println();
+
+			Nonuser nuser = NuDao.selectById(usercp);
+			System.out.println(username+" "+nuser.getNonuserName());
+			if(username.equals(nuser.getNonuserName()))
+				return usercp;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "fail";
+	}
+
 	public String JoinUser() {
 
 		String userid;

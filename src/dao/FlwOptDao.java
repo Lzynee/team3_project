@@ -73,18 +73,22 @@ public class FlwOptDao {
 		return vo;
 	}
 
-	public List<FlwOpt> selectWaybillNoList(String waybillNo) {
+	public List<FlwOpt> selectWaybillNoList(String billNoOrCp, Boolean isBillNo) {
 		FlwOpt vo = null;
 		List<FlwOpt> list = new ArrayList<>();
 
 		try {
 			Connection conn = SuperDao.getConnection();
+			// user, non user에 따라 동적 쿼리처리
+			String condition = (isBillNo)? "wb.user_id " : "non_cp";
 			String sql = "select flwOpt_no, flwOpt_name, flwOpt_weight, flwOpt_size, flwOpt_fee, f.bill_no " +
 							"from Bill as wb " +
-							"join flwOpt as f on wb.bill_no= f.bill_no and wb.user_id = ?;";
+							"join flwOpt as f on wb.bill_no= f.bill_no and " +
+							condition
+							+"= ?;";
 
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, waybillNo);
+			stmt.setString(1, billNoOrCp);
 			ResultSet re = stmt.executeQuery();
 			while (re.next()) {
 				vo = new FlwOpt();
