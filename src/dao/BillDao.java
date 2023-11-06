@@ -36,7 +36,7 @@ public class BillDao {
 				vo.setCompanyCd(re.getString("company_cd"));
 				vo.setUserId(re.getString("user_id"));
 				vo.setNonCp(re.getString("non_cp"));				
-				vo.setRegDate(re.getDate("reg_date"));
+				vo.setRegDate(re.getTimestamp("reg_date"));
 				vo.setMsg(re.getString("msg"));
 				vo.setTotalFee(re.getInt("total_fee"));
 				list.add(vo);
@@ -72,7 +72,7 @@ public class BillDao {
 				vo.setUserId(re.getString("user_id"));
 				vo.setNonCp(re.getString("non_cp"));				
 				vo.setCompanyName(re.getString("company_name"));
-				vo.setRegDate(re.getDate("reg_date"));
+				vo.setRegDate(re.getTimestamp("reg_date"));
 				vo.setMsg(re.getString("msg"));
 				vo.setTotalFee(re.getInt("total_fee"));
 			}

@@ -3,9 +3,13 @@ package view;
 import dao.FlwOptDao;
 import dao.UserDao;
 import dao.BillDao;
+import model.Bill;
 import model.FlwOpt;
 import model.User;
 
+
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class ItemView implements CommonView {
@@ -147,7 +151,7 @@ public class ItemView implements CommonView {
       // 처리 작업 분기
 
       if ("1".equals(menuNum)) {
-        shippingStatus();
+        shippingStatus(list.get(listNum-1).getBillNo());
 
       } else if ("2".equals(menuNum)) {
         BillView.getinstance().billInfo(bDao.selectById(list.get(listNum-1).getBillNo()), list.get(listNum-1));
@@ -169,8 +173,28 @@ public class ItemView implements CommonView {
   }
 
 
-  public void shippingStatus(){
+  public void shippingStatus(String billNo){
+    BillDao bDao = new BillDao();
+    Bill bl = bDao.selectById(billNo);
+    //java.sql.Timestamp 클래스로 밀리초단위까지 받아옴
+    Timestamp regTime = bl.getRegDate();
 
+    //초단위 포멧으로 변환
+    SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+    String startTime = sdf.format(regTime);
+
+    System.out.println("-----------------------------------------------------");
+    System.out.println("                 [배송 현황 확인]");
+    System.out.println("-----------------------------------------------------");
+    System.out.println();
+    System.out.println("시간\t\t\t\t\t\t현재위치\t\t\t\t배송상태");
+    System.out.println();
+    System.out.println("-----------------------------------------------------");
+
+    //https://bluesid.tistory.com/245
+
+    // 배송 추적표 출력
+    System.out.println(startTime);
   }
   public static ItemView getinstance() {
     return view;
