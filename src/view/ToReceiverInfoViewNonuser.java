@@ -1,10 +1,9 @@
 package view;
 
-import dao.ParcelDao;
-import dao.SuperDao;
-import dao.WaybillDao;
-import model.Parcel;
-import model.Waybill;
+import dao.FlwOptDao;
+import dao.BillDao;
+import model.FlwOpt;
+import model.Bill;
 
 public class ToReceiverInfoViewNonuser implements CommonView{
 	
@@ -16,9 +15,9 @@ public class ToReceiverInfoViewNonuser implements CommonView{
 
 	
 	// 받는곳 입력
-	public void info(String nonUserCp, Parcel parcel, int cost) {
-		WaybillDao wbDao = new WaybillDao();
-		ParcelDao pDao = new ParcelDao();
+	public void info(String nonUserCp, FlwOpt flwOpt, int cost) {
+		BillDao bDao = new BillDao();
+		FlwOptDao fDao = new FlwOptDao();
 
 		try {
 			while (true) {
@@ -47,8 +46,8 @@ public class ToReceiverInfoViewNonuser implements CommonView{
 
 				int zipcode = getZipCode(ReceiverAddr);
 
-				// 넘겨 받은 parcelNum 의 왼쪽의 공백을 0으로 채움
-				String parcelNumStr = String.format("%05d", parcel.getParcelNo());
+				// 넘겨 받은 flwOptNum 의 왼쪽의 공백을 0으로 채움
+				String flwOptNumStr = String.format("%05d", flwOpt.getFlwOptNo());
 
 				// 도서 산간지역 요금 추가
 				int surcharge = 0;
@@ -58,23 +57,23 @@ public class ToReceiverInfoViewNonuser implements CommonView{
 				}
 
 				// 무게당 요금과 도서 산간지역을 합쳐 최종 요금 계산
-				int totalFee = parcel.getParcelFee() + surcharge;
+				int totalFee = flwOpt.getFlwOptFee() + surcharge;
 
 
 				// 우편번호와 상품 번호를 조합하여 영수증 번호 생성
-				String wbNum = parcelNumStr + zipcode;
+				String wbNum = flwOptNumStr + zipcode;
 
 				// 운송장 기본 정보 입력
-				Waybill wayBill = new Waybill();
-				wayBill.setWaybillNo(wbNum);
-				wayBill.setTotalFee(totalFee);
-				wayBill.setRcvrName(ReceiverName);
-				wayBill.setRcvrAddr(ReceiverAddr);
-				wayBill.setRcvrDetailAddr(ReceiverDetailAddr);
-				wayBill.setRcvrCp(ReceiverCp);
-				wayBill.setCompanyCd(companyCd[comindex++]); // 코드는 나중에 수정필요
-				wayBill.setNonCp(nonUserCp);
-				parcel.setWaybillNo(wbNum);
+				Bill bill = new Bill();
+				bill.setBillNo(wbNum);
+				bill.setTotalFee(totalFee);
+				bill.setRcvrName(ReceiverName);
+				bill.setRcvrAddr(ReceiverAddr);
+				bill.setRcvrDetailAddr(ReceiverDetailAddr);
+				bill.setRcvrCp(ReceiverCp);
+				bill.setCompanyCd(companyCd[comindex++]); // 코드는 나중에 수정필요
+				bill.setNonCp(nonUserCp);
+				flwOpt.setBillNo(wbNum);
 				
 				// 받는 사람 정보 확인
 				System.out.println();
@@ -109,13 +108,13 @@ public class ToReceiverInfoViewNonuser implements CommonView{
 						
 						// 결제 완료 시 요청사항 작성
 						String msg = message();
-						wayBill.setMsg(msg);
+						bill.setMsg(msg);
 						
 						// 결제 완료 시 영수증데이터 생성
 						
-						wbDao.create(wayBill);
-						pDao.create(parcel);
-						WaybillView.getinstance().waybillInfo(wayBill,parcel);
+						bDao.create(bill);
+						fDao.create(flwOpt);
+						BillView.getinstance().billInfo(bill, flwOpt);
 						break;
 					} else {
 						System.out.println("-----------------------------------------------------");

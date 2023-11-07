@@ -2,7 +2,7 @@ package view;
 
 import java.util.Scanner;
 
-import dao.WaybillDao;
+import dao.BillDao;
 
 public interface CommonView {
 
@@ -17,20 +17,38 @@ public interface CommonView {
 	// 작성일자 : 2023-05-25
 	//설명 : 요금 계산
 	// 조건 변경에 따른 로직 변경 필요 ( 이창규 )
-	public default int costs(int mass)
-	{
-		int cost = 0;
-		if (mass <= 2) {
-			cost = 5500;
-		} else if (mass <= 5) {
-			cost = 6500;
-		} else if (mass <= 10) {
-			cost = 7500;
-		} else if (mass <= 20) {
-			cost = 8500;
+	public default int subCharge(String flwOptName , String smlSize) {
+
+		int fCharge = 0;
+		int midCharge = 0;
+
+
+
+		if (flwOptName.equals("기념일 화분")) {
+			fCharge = 70000;
+		} else if (flwOptName.equals("기념일 꽃다발")){
+			fCharge = 50000;
+		} else if (flwOptName.equals("경조사 화분")) {
+			fCharge = 60000;
+		} else if (flwOptName.equals("경조사 화환")) {
+			fCharge = 80000;
 		}
-		return cost;
-	}
+
+		if (smlSize.equals("S")) {
+			midCharge = fCharge-10000;
+		} else if (smlSize.equals("M")) {
+			midCharge = fCharge;
+		} else if (smlSize.equals("L")) {
+			midCharge = fCharge+10000;
+		}
+			return midCharge;
+
+  }
+
+
+
+
+
 
 	// 작성자 : 명지완
 	// 작성일자 : 2023-05-25
@@ -38,27 +56,27 @@ public interface CommonView {
 	public default int getZipCode(String line) {
 
 		String[] strToStrArray = line.split(" ");
-		WaybillDao wdao = new WaybillDao();
+		BillDao bDao = new BillDao();
 		int zipcode = 0;
 
 		// 가평군 등의 '군'의 경우
 		if (strToStrArray.length == 4) {
 			String[] numTobunum = strToStrArray[3].split("-"); // 지역번호,부번호 나누기
 			if (numTobunum.length >= 2)  //부번호가 있을때
-				zipcode = wdao.selectzipcode(strToStrArray[0], strToStrArray[1], strToStrArray[2],
+				zipcode = bDao.selectzipcode(strToStrArray[0], strToStrArray[1], strToStrArray[2],
 						Integer.parseInt(numTobunum[0]), Integer.parseInt(numTobunum[1]));
 			else //부번호가 없을때
-				zipcode = wdao.selectzipcode(strToStrArray[0], strToStrArray[1], strToStrArray[2],
+				zipcode = bDao.selectzipcode(strToStrArray[0], strToStrArray[1], strToStrArray[2],
 						Integer.parseInt(numTobunum[0]));
 
 		} 
 		else { 	// 안산시 등의 '시'의 경우
 			String[] numTobunum = strToStrArray[4].split("-"); // 지역번호,부번호 나누기
 			if (numTobunum.length >= 2) //부번호가 있을때
-				zipcode = wdao.selectzipcode(strToStrArray[0], strToStrArray[1] + " " + strToStrArray[2],
+				zipcode = bDao.selectzipcode(strToStrArray[0], strToStrArray[1] + " " + strToStrArray[2],
 						strToStrArray[3], Integer.parseInt(numTobunum[0]), Integer.parseInt(numTobunum[1]));
 			else //부번호가 없을때
-				zipcode = wdao.selectzipcode(strToStrArray[0], strToStrArray[1] + " " + strToStrArray[2],
+				zipcode = bDao.selectzipcode(strToStrArray[0], strToStrArray[1] + " " + strToStrArray[2],
 						strToStrArray[3], Integer.parseInt(numTobunum[0]));
 		}
 
@@ -73,7 +91,7 @@ public interface CommonView {
 			System.out.println();
 			System.out.println("                     [ 결    제 ]");
 			System.out.println();
-			// 현재 cost로만 받아오고 있는데, ParcelinfoView에서 사이즈와 수량을 넘겨주고-> ToReceverInfoview가 받아야됨
+			// 현재 cost로만 받아오고 있는데, flwoptinfoView에서 사이즈와 수량을 넘겨주고-> ToReceverInfoview가 받아야됨
 			System.out.println(" 사이즈별 요금 " + cost +"원과 지역별 요금 " + surcharge+"을 합쳐");
 			//System.out.println(" 사이즈별 요금 " + cost +"x"+ cnt +"원과 지역별 요금 " + surcharge+"을 합쳐");
 			System.out.println(" 총 요금은 " + (cost+surcharge)+"원 입니다.");
@@ -104,7 +122,7 @@ public interface CommonView {
 			System.out.println();
 			System.out.println("                      [ 결    제 ]");
 			System.out.println();
-			// 현재 cost로만 받아오고 있는데, ParcelinfoView에서 사이즈와 수량을 넘겨주고-> ToReceverInfoview가 받아야됨
+			// 현재 cost로만 받아오고 있는데, flwoptinfoView에서 사이즈와 수량을 넘겨주고-> ToReceverInfoview가 받아야됨
 			System.out.println(" 사이즈별 요금 " + cost +"원과 지역별 요금 " + surcharge+"을 합쳐");
 			//System.out.println(" 사이즈별 요금 " + cost +"x"+ cnt +"원과 지역별 요금 " + surcharge+"을 합쳐");
 			System.out.println(" 총 요금은 " + (cost+surcharge)+"원 입니다.");
@@ -143,11 +161,11 @@ public interface CommonView {
 		while (true) {
 
 			
-
+// 출력 메시지 일부 수정 === (Nov.06 이양진)
 			System.out.println("-----------------------------------------------------");
 			System.out.println("                      꽃배달 요청사항");
 			System.out.println();
-			System.out.println("      꽃배달 요청 사항을 선택하시면 바로 운송장 출력이 진행됩니다.");
+			System.out.println("      꽃배달 요청 사항을 선택하시면 바로 영수증이 출력됩니다.");
 			System.out.println();
 			System.out.println("\t      1. 선택 안함");
 			System.out.println("\t      2. 배송 전 연락주세요");

@@ -4,25 +4,24 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import dao.NonuserDao;
-import dao.ParcelDao;
-import dao.SuperDao;
+import dao.FlwOptDao;
 import dao.UserDao;
-import dao.WaybillDao;
+import dao.BillDao;
 import model.Nonuser;
-import model.Parcel;
+import model.FlwOpt;
 import model.User;
-import model.Waybill;
+import model.Bill;
 
-public class WaybillView implements CommonView  {
+public class BillView implements CommonView  {
 
-	private static WaybillView view = new WaybillView();
+	private static BillView view = new BillView();
 	
-	public void waybillInfo(Waybill wb, Parcel parcel) {
+	public void billInfo(Bill wb, FlwOpt flwOpt) {
 			UserDao uDao = new UserDao();
 			NonuserDao nuDao = new NonuserDao();
-			WaybillDao wDao = new WaybillDao();
+			BillDao bDao = new BillDao();
 			
-		//	String parcelNumStr = String.valueOf(parcelNum);
+		//	String flwOptNumStr = String.valueOf(flwOptNum);
 
 			User user = uDao.selectById(wb.getUserId());
 //			Unknown column 'reg_date' in 'order clause'
@@ -67,10 +66,10 @@ public class WaybillView implements CommonView  {
 			int Szipcode = getZipCode(Saddr);
 
 			// 택배 중량 크기 내용물
-			String pSize = parcel.getParcelSize();
-			String pName = parcel.getParcelName();
-//			parcel의 크기 관련 변수 주석 처리 === (Nov.05. 이양진)
-//			int pWeight = parcel.getParcelWeight();
+			String pSize = flwOpt.getFlwOptSize();
+			String pName = flwOpt.getFlwOptName();
+//			Flwopt의 크기 관련 변수 주석 처리 === (Nov.05. 이양진)
+//			int pWeight = flwOpt.getFlwoptWeight();
 			// 택배 접수일(발송일)
 	        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -83,7 +82,7 @@ public class WaybillView implements CommonView  {
 //			택배회사 관련 변수 === (Nov.05. 이양진)
 			if(wb.getCompanyName() == null)
 			{
-				wb.setCompanyName(wDao.selectCompanyByName(wb.getCompanyCd()));
+				wb.setCompanyName(bDao.selectCompanyByName(wb.getCompanyCd()));
 			}
 
 			// 영수증 정보 출력
@@ -93,7 +92,7 @@ public class WaybillView implements CommonView  {
 			System.out.println();
 			System.out.println("┌--------------------------------------------------------------------------┐");
 //			택배회사 관련 변수를 사용하는 라인 === (Nov.05. 이양진)
-			System.out.printf("| 주문번호 : %-38s  택배회사 : %-10s |\n", wb.getWaybillNo() , wb.getCompanyName());
+			System.out.printf("| 주문번호 : %-38s  택배회사 : %-10s |\n", wb.getBillNo() , wb.getCompanyName());
 			System.out.println("|--------------------------------------------------------------------------|");
 			System.out.printf("| 보내는사람 : %-20s  보내는사람 전화번호: %-16s |\n", Sname, Scp);
 			System.out.printf("| 보내는사람 주소 : %-50s | \n","( " + Szipcode+" ) " + Saddr + " " + SDetailAddr);
@@ -110,7 +109,7 @@ public class WaybillView implements CommonView  {
 			System.out.println();
 			System.out.println("                            이용해 주셔서 감사합니다.");
 			System.out.println();
-			System.out.println(" 1. 메인 메뉴로    2. 시스템 종료");
+			System.out.printf("\t%-20s\t%-20s\n", "1. 메인 메뉴로", "2. 시스템 종료");
 			System.out.println("-----------------------------------------------------");
 			System.out.print(" 메뉴 선택 : ");
 			String menuNO = scan.nextLine();
@@ -129,8 +128,8 @@ public class WaybillView implements CommonView  {
 		while (true) {
 
 			try {
-				WaybillDao wbDao = new WaybillDao();
-				ParcelDao pDao = new ParcelDao();
+				BillDao wbDao = new BillDao();
+				FlwOptDao fDao = new FlwOptDao();
 				UserView userV = new UserView();
 
 //				주문 내역 조회 시 바로 회원 / 비회원 로그인 창으로 넘어가도록 해당 라인을 주석 처리함. === (Nov.05. 이양진)
@@ -142,8 +141,8 @@ public class WaybillView implements CommonView  {
 				System.out.println("-----------------------------------------------------");
 				System.out.print("영수증 번호 : ");
 				String wbNum = scan.nextLine();
-				Waybill wb = wbDao.selectById(wbNum);
-				Parcel pc = pDao.selectWaybillNo(wb.getWaybillNo());
+				Bill wb = wbDao.selectById(wbNum);
+				FlwOpt pc = fDao.selectBillNo(wb.getBillNo());
 
 				
 				// 영수증이 회원으로 접수 되었을때
@@ -168,7 +167,7 @@ public class WaybillView implements CommonView  {
 						String menuNum = scan.nextLine();
 
 						if ("1".equals(menuNum)) {
-							waybillInfo(wb,pc);
+							billInfo(wb,pc);
 							break;
 						} else {
 							wbDao.delete(wbNum);
@@ -220,7 +219,7 @@ public class WaybillView implements CommonView  {
 						String menuNum = scan.nextLine();
 
 						if ("1".equals(menuNum)) {
-							waybillInfo(wb,pc);
+							billInfo(wb,pc);
 							break;
 						} else {
 							wbDao.delete(wbNum);
@@ -251,7 +250,7 @@ public class WaybillView implements CommonView  {
 		}
 	}
 	
-	public static WaybillView getinstance()
+	public static BillView getinstance()
 	{
 		return view;
 	}

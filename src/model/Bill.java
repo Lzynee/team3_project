@@ -1,12 +1,12 @@
 package model;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 import lombok.Data;
 
 @Data
-public class Waybill {
-	private String waybillNo;
+public class Bill {
+	private String billNo;
 
 	private String rcvrName;
 
@@ -26,7 +26,7 @@ public class Waybill {
 	
 	private int totalFee;
 	
-	private Date regDate;
+	private Timestamp regDate;
 	
 	private String msg = "메시지를 입력하지 않았습니다.";
 

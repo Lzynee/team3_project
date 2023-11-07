@@ -2,14 +2,13 @@ package view;
 
 import java.util.List;
 
-import dao.ParcelDao;
-import dao.SuperDao;
+import dao.FlwOptDao;
 import dao.UserDao;
-import dao.WaybillDao;
-import model.Parcel;
+import dao.BillDao;
+import model.FlwOpt;
 import model.User;
 import model.Useraddress;
-import model.Waybill;
+import model.Bill;
 
 public class ToReceiverInfoView implements CommonView {
 
@@ -21,10 +20,10 @@ public class ToReceiverInfoView implements CommonView {
 			"15", "16", "17", "18", "19", "20" };
 
 	// 받는곳 입력
-	public void info(String userId, Parcel parcel, int cost) {
-		WaybillDao wbDao = new WaybillDao();
+	public void info(String userId, FlwOpt flwOpt, int cost) {
+		BillDao bDao = new BillDao();
 		UserDao uDao = new UserDao();
-		ParcelDao pDao = new ParcelDao();
+		FlwOptDao fDao = new FlwOptDao();
 		User user = new User();
 		
 		String ReceiverName = "";
@@ -170,11 +169,11 @@ public class ToReceiverInfoView implements CommonView {
 				zipcode = getZipCode(ReceiverAddr);
 
 				
-				// 넘겨 받은 parcelNum 의 왼쪽의 공백을 0으로 채움
-				String parcelNumStr = String.format("%05d", parcel.getParcelNo());
+				// 넘겨 받은 flwOptNum 의 왼쪽의 공백을 0으로 채움
+				String flwOptNumStr = String.format("%05d", flwOpt.getFlwOptNo());
 
 				// 우편번호와 상품번호를 조합하여 운송장 번호 생성
-				String wbNum = parcelNumStr + zipcode;
+				String wbNum = flwOptNumStr + zipcode;
 
 
 				// 도서 산간지역 요금 추가
@@ -187,15 +186,15 @@ public class ToReceiverInfoView implements CommonView {
 				// 무게당 요금과 도서 산간지역을 합쳐 최종 요금 계산
 
 				// 운송장 기본 정보 입력
-				Waybill wayBill = new Waybill();
-				wayBill.setWaybillNo(wbNum);
-				wayBill.setRcvrName(ReceiverName);
-				wayBill.setRcvrAddr(ReceiverAddr);
-				wayBill.setRcvrDetailAddr(ReceiverDetailAddr);
-				wayBill.setRcvrCp(ReceiverCp);
-				wayBill.setCompanyCd(companyCd[comindex++]);
-				wayBill.setUserId(userId);
-				parcel.setWaybillNo(wbNum);
+				Bill bill = new Bill();
+				bill.setBillNo(wbNum);
+				bill.setRcvrName(ReceiverName);
+				bill.setRcvrAddr(ReceiverAddr);
+				bill.setRcvrDetailAddr(ReceiverDetailAddr);
+				bill.setRcvrCp(ReceiverCp);
+				bill.setCompanyCd(companyCd[comindex++]);
+				bill.setUserId(userId);
+				flwOpt.setBillNo(wbNum);
 
 				// 받는 사람 정보 확인
 				System.out.println();
@@ -233,7 +232,7 @@ public class ToReceiverInfoView implements CommonView {
 					
 					// 등급 고려하여 최종요금
 					totalFee = cost + surcharge - discount;
-					wayBill.setTotalFee(totalFee);
+					bill.setTotalFee(totalFee);
 					
 					if (sign != "fail") {
 
@@ -245,7 +244,7 @@ public class ToReceiverInfoView implements CommonView {
 						
 						// 결제 완료 시 요청사항 작성
 						String msg = message();
-						wayBill.setMsg(msg);
+						bill.setMsg(msg);
 						
 						// 결제 완료 시 등급 +1
 						grade++;
@@ -253,11 +252,11 @@ public class ToReceiverInfoView implements CommonView {
 						uDao.gradeUpdate(userId, grade);
 						
 						// 결제 완료 시 운송장데이터 생성
-						wbDao.create(wayBill);
-						pDao.create(parcel);
+						bDao.create(bill);
+						fDao.create(flwOpt);
 						
 						// 운송장 출력 화면으로
-						WaybillView.getinstance().waybillInfo(wayBill, parcel);
+						BillView.getinstance().billInfo(bill, flwOpt);
 						break;
 					} else {
 						
