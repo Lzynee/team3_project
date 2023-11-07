@@ -10,6 +10,8 @@ import model.User;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class ItemView implements CommonView {
@@ -208,12 +210,6 @@ public class ItemView implements CommonView {
   public void shippingStatus(String billNo){
     BillDao bDao = new BillDao();
     Bill bl = bDao.selectById(billNo);
-    //java.sql.Timestamp 클래스로 밀리초단위까지 받아옴
-    Timestamp regTime = bl.getRegDate();
-
-    //초단위 포멧으로 변환
-    SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
-    String startTime = sdf.format(regTime);
 
     System.out.println("-----------------------------------------------------");
     System.out.println("                 [배송 현황 확인]");
@@ -223,10 +219,76 @@ public class ItemView implements CommonView {
     System.out.println();
     System.out.println("-----------------------------------------------------");
 
-    //https://bluesid.tistory.com/245
+    //java.sql.Timestamp 클래스로 주문등록 시각 밀리초단위까지 받아옴
+    Timestamp regTime = bl.getRegDate();
+    //수령주소 받아옴
+    String addr = bl.getRcvrAddr();
+    //수령주소 파싱
+    String[] strToStrArray = addr.split(" ");
 
+    //추후 프린트를 위해 String, 초단위 포멧으로 변환
+    SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+    String startTime = sdf.format(regTime);
+    //hub 배정 위한 사용자별 고정 인덱스 받아옴
+    int hubNum = startTime.charAt(startTime.length()-1)-'0';
+
+    //캘린더 객체 받아옴
+    Calendar reg = Calendar.getInstance();
+    Calendar now = Calendar.getInstance();
+    //현재시각 받아옴
+    Date dateFormatNow = Calendar.getInstance().getTime();
+
+    //캘린더 객체에 주문등록 시각, 현재시각 주입
+    reg.setTimeInMillis(regTime.getTime());
+    now.setTimeInMillis(dateFormatNow.getTime());
+
+    //현재시각 - 주문등록 시각
+    long diffSec = now.getTimeInMillis() - reg.getTimeInMillis();
+
+    // hub 배정용 배열
+    String[] hub = { "동탄1HUB", "동탄1HUB", "부천HUB", "시흥HUB", "안산HUB",
+            "호법HUB", "고양HUB", "용인HUB", "옥천HUB", "평택1HUB"};
     // 배송 추적표 출력
-    System.out.println(startTime);
+    // 조건에 사용할 밀리초 시간 환산용 변수
+    int hrToMilSec = 3600000;
+    String shippingTime = "";
+    // 시간 , 현재위치 받아옴, 배송상태fix
+    if(diffSec > 48*hrToMilSec){
+
+      Calendar reg48 = Calendar.getInstance();
+      reg48.add(Calendar.HOUR, 48);
+      shippingTime = sdf.format(reg48.getTime());
+
+      System.out.println(shippingTime +"\t\t"+ strToStrArray[1] +"\t\t"+ "배송완료");
+    }
+    if (diffSec > 36*hrToMilSec) {
+      Calendar reg36 = Calendar.getInstance();
+      reg36.add(Calendar.HOUR, 36);
+      shippingTime = sdf.format(reg36.getTime());
+
+      System.out.println(shippingTime +"\t\t"+ strToStrArray[1] +"\t\t"+ "배송출발");
+    }
+    if (diffSec > 24*hrToMilSec) {
+      Calendar reg24 = Calendar.getInstance();
+      reg24.add(Calendar.HOUR, 24);
+      shippingTime = sdf.format(reg24.getTime());
+
+      System.out.println(shippingTime +"\t\t"+ strToStrArray[1] +"\t\t\t"+ "캠프도착");
+    }
+
+    // 시간 , 허브배정, 배송상태fix
+    if (diffSec > 6*hrToMilSec){
+      Calendar reg1 = Calendar.getInstance();
+      reg1.add(Calendar.HOUR, 1);
+      shippingTime = sdf.format(reg1.getTime());
+
+      System.out.println(shippingTime +"\t\t"+ hub[hubNum] +"\t\t\t"+ "센터상차");
+
+      reg1.add(Calendar.HOUR, -1);
+      shippingTime = sdf.format(reg1.getTime());
+      System.out.println(shippingTime +"\t\t"+ hub[hubNum] +"\t\t\t"+ "집하");
+    }
+
   }
   public static ItemView getinstance() {
     return view;
