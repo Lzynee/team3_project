@@ -17,20 +17,38 @@ public interface CommonView {
 	// 작성일자 : 2023-05-25
 	//설명 : 요금 계산
 	// 조건 변경에 따른 로직 변경 필요 ( 이창규 )
-	public default int costs(int mass)
-	{
-		int cost = 0;
-		if (mass <= 2) {
-			cost = 5500;
-		} else if (mass <= 5) {
-			cost = 6500;
-		} else if (mass <= 10) {
-			cost = 7500;
-		} else if (mass <= 20) {
-			cost = 8500;
+	public default int subCharge(String flwOptName , String smlSize) {
+
+		int fCharge = 0;
+		int midCharge = 0;
+
+
+
+		if (flwOptName.equals("기념일 화분")) {
+			fCharge = 70000;
+		} else if (flwOptName.equals("기념일 꽃다발")){
+			fCharge = 50000;
+		} else if (flwOptName.equals("경조사 화분")) {
+			fCharge = 60000;
+		} else if (flwOptName.equals("경조사 화환")) {
+			fCharge = 80000;
 		}
-		return cost;
-	}
+
+		if (smlSize.equals("S")) {
+			midCharge = fCharge-10000;
+		} else if (smlSize.equals("M")) {
+			midCharge = fCharge;
+		} else if (smlSize.equals("L")) {
+			midCharge = fCharge+10000;
+		}
+			return midCharge;
+
+  }
+
+
+
+
+
 
 	// 작성자 : 명지완
 	// 작성일자 : 2023-05-25
