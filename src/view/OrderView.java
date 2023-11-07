@@ -30,28 +30,7 @@ public class OrderView implements CommonView {
 				String categoryNo = scan.nextLine();
 				System.out.println();
 
-				if ("2".equals(categoryNo)) {
-					System.out.println("-----------------------------------------------------");
-					System.out.println();
-					System.out.println("                   [ 경조사 ]");
-					System.out.println();
-					System.out.println("-----------------------------------------------------");
-					System.out.println();
-					System.out.printf("\t%-20s\t%-20s\n", "1. 화분", "2. 화환");
-					System.out.println();
-					System.out.println("-----------------------------------------------------");
-					System.out.print("상품 선택(메뉴 외 값 입력시 처음부터 재선택): ");
-					String menuNo = scan.nextLine();
-					if ("1".equals(menuNo)) {
-						productName = "경조사 화분";
-					} else if ("2".equals(menuNo)) {
-						productName = "경조사 화환";
-					} else {
-						System.out.println("메뉴에 없는 값을 입력하셨습니다. 처음부터 다시 선택해주세요.");
-						continue;
-					}
-
-				} else if ("1".equals(categoryNo)) {
+				if ("1".equals(categoryNo)) {
 					System.out.println("-----------------------------------------------------");
 					System.out.println();
 					System.out.println("                   [ 기념일 ]");
@@ -67,6 +46,27 @@ public class OrderView implements CommonView {
 						productName = "기념일 화분";
 					} else if ("2".equals(menuNo)) {
 						productName = "기념일 꽃다발";
+					} else {
+						System.out.println("메뉴에 없는 값을 입력하셨습니다. 처음부터 다시 선택해주세요.");
+						continue;
+					}
+
+				} else if ("2".equals(categoryNo)) {
+					System.out.println("-----------------------------------------------------");
+					System.out.println();
+					System.out.println("                   [ 경조사 ]");
+					System.out.println();
+					System.out.println("-----------------------------------------------------");
+					System.out.println();
+					System.out.printf("\t%-20s\t%-20s\n", "1. 화분", "2. 화환");
+					System.out.println();
+					System.out.println("-----------------------------------------------------");
+					System.out.print("상품 선택(메뉴 외 값 입력시 처음부터 재선택): ");
+					String menuNo = scan.nextLine();
+					if ("1".equals(menuNo)) {
+						productName = "경조사 화분";
+					} else if ("2".equals(menuNo)) {
+						productName = "경조사 화환";
 					} else {
 						System.out.println("메뉴에 없는 값을 입력하셨습니다. 처음부터 다시 선택해주세요.");
 						continue;
