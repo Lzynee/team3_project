@@ -27,10 +27,10 @@ public class FlwOptinfoViewNonuser implements CommonView {
 				System.out.println("-----------------------------------------------------");
 				System.out.println();
 				// 무게 => 수량 , 크기 => 사이즈로 문장 변경
-				System.out.println("                   [ 수량 및 사이즈 측정 ]");
+				System.out.println("                [ 수량 및 사이즈 입력 ]"); // 문구 수정, 간격 조절
 				System.out.println();
 				// 무게 => 수량 , 크기 => 사이즈로 문장 변경
-				System.out.println("                 수량과 사이즈를 입력해 주세요");
+				System.out.println("              수량과 사이즈를 입력해 주세요");
 				System.out.println("-----------------------------------------------------");
 
 				// 수량별 요금 계산
