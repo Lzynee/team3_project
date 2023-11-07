@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.PurchaseHistory;
 import model.Bill;
 
 public class BillDao {

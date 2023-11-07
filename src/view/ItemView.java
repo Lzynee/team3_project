@@ -153,12 +153,14 @@ public class ItemView implements CommonView {
       String menuNum = scan.nextLine();
 
       // 처리 작업 분기
+      String[] args = {};
 
       if ("1".equals(menuNum)) {  // 배송 현황 확인
         shippingStatus(list.get(listNum-1).getBillNo());
 
       } else if ("2".equals(menuNum)) {  // 영수증 출력
         BillView.getinstance().billInfo(bDao.selectById(list.get(listNum-1).getBillNo()), list.get(listNum-1));
+        MainView.main(args);
 
         // 취소 절차를 계속 진행할지 확인 후 취소 또는 메인 화면으로 돌아간다.
       } else if ("3".equals(menuNum)) {  // 주문 취소
@@ -169,9 +171,9 @@ public class ItemView implements CommonView {
         System.out.println();
         System.out.println("  1을 입력하시면 현재 열람하고 계신 주문의 진행 상황이 취소됩니다.");
         System.out.println();
-        System.out.println("        계속하시겠습니까?");
+        System.out.println("                    계속하시겠습니까?");
         System.out.println();
-        System.out.printf("\t%-20s\t%-20s\n", "1. 계속 (주문 취소)", "2. 시스템 종료");
+        System.out.printf("\t%-20s\t%-20s\n", "1. 계속 (주문 취소)", "2. 메인 메뉴로");
         System.out.println("-----------------------------------------------------");
         System.out.print(" 메뉴 선택 : ");
         String menuNO = scan.nextLine();
@@ -183,13 +185,15 @@ public class ItemView implements CommonView {
           System.out.println();
           System.out.println("                주문이 취소 처리되었습니다.");
           System.out.println();
-          System.out.println("                  프로그램을 종료합니다.");
+          System.out.println("                  메인 메뉴로 돌아갑니다.");
           System.out.println();
           System.out.println("-----------------------------------------------------");
 
-          exit();
+          MainView.main(args);
 
-        } else if ("2".equals(menuNO)) exit();
+        } else if ("2".equals(menuNO)) {
+          MainView.main(args);
+        }
 
 
       } else {

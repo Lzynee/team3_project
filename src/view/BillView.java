@@ -20,6 +20,7 @@ public class BillView implements CommonView  {
 			UserDao uDao = new UserDao();
 			NonuserDao nuDao = new NonuserDao();
 			BillDao bDao = new BillDao();
+			String[] args = {};
 			
 		//	String flwOptNumStr = String.valueOf(flwOptNum);
 
@@ -118,6 +119,7 @@ public class BillView implements CommonView  {
 				System.out.println();
 				System.out.println();
 				System.out.println();
+				MainView.main(args);
 			} else {
 				exit();
 			}
