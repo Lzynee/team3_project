@@ -19,11 +19,11 @@ public class OrderView implements CommonView {
 				System.out.println();
 				System.out.println("-----------------------------------------------------");
 				System.out.println();
-				System.out.println("                   [ 상품 카테고리 선택 ]");
+				System.out.println("               [ 상품 카테고리 선택 ]"); // 간격 조절
 				System.out.println();
 				System.out.println("-----------------------------------------------------");
 				System.out.println();
-				System.out.printf("\t%-20s\t%-20s\n", "1. 기념일", "2. 경조사");
+				System.out.println("          1. 기념일               2. 경조사"); // 간격 조절
 				System.out.println();
 				System.out.println("-----------------------------------------------------");
 				System.out.print("카테고리 선택(메뉴 외 값 입력시 재선택): ");
@@ -37,7 +37,7 @@ public class OrderView implements CommonView {
 					System.out.println();
 					System.out.println("-----------------------------------------------------");
 					System.out.println();
-					System.out.printf("\t%-20s\t%-20s\n", "1. 화분", "2. 꽃다발");
+					System.out.println("     1. 화분(7만원)            2. 꽃다발(5만원)"); // 가격 추가
 					System.out.println();
 					System.out.println("-----------------------------------------------------");
 					System.out.print("상품 선택(메뉴 외 값 입력시 처음부터 재선택): ");
@@ -58,7 +58,7 @@ public class OrderView implements CommonView {
 					System.out.println();
 					System.out.println("-----------------------------------------------------");
 					System.out.println();
-					System.out.printf("\t%-20s\t%-20s\n", "1. 화분", "2. 화환");
+					System.out.println("     1. 화분(6만원)              2. 화환(8만원)"); // 가격 추가
 					System.out.println();
 					System.out.println("-----------------------------------------------------");
 					System.out.print("상품 선택(메뉴 외 값 입력시 처음부터 재선택): ");
