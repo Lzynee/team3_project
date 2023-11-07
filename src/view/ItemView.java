@@ -30,7 +30,7 @@ public class ItemView implements CommonView {
         System.out.println();
         System.out.println("       해당 기능을 사용하시려면 로그인을 하셔야 합니다.");
         System.out.println();
-        System.out.printf("\t%-20s\t%-20s\n", "1. 회원 로그인", "2. 비회원 조회");
+        System.out.printf("\t%-13s\t%-13s\t%-13s\n", "1. 회원 로그인", "2. 비회원 조회", "3. 메인 메뉴로");
         System.out.println("-----------------------------------------------------");
         System.out.print("메뉴 선택 : ");
         String menuNo = scan.nextLine();
@@ -93,7 +93,9 @@ public class ItemView implements CommonView {
             continue;
           }
 
-          // 1, 2 외 다른 값을 입력한 경우
+        } else if ("3".equals(menuNo)) {
+          return;
+
         } else {
           System.out.println("잘못된 접근입니다. 다시 시도해 주십시오");
           break;
@@ -156,15 +158,37 @@ public class ItemView implements CommonView {
       } else if ("2".equals(menuNum)) {  // 영수증 출력
         BillView.getinstance().billInfo(bDao.selectById(list.get(listNum-1).getBillNo()), list.get(listNum-1));
 
+        // 취소 절차를 계속 진행할지 확인 후 취소 또는 메인 화면으로 돌아간다.
       } else if ("3".equals(menuNum)) {  // 주문 취소
-        System.out.println("-----------------------------------------------------");
-        System.out.println();
-        System.out.println("        해당 주문을 취소합니다.");
-        System.out.println();
-        System.out.println("-----------------------------------------------------");
 
-        // 주문 취소 명령문 실행
-        bDao.delete(list.get(listNum-1).getBillNo());
+        System.out.println("-----------------------------------------------------");
+        System.out.println();
+        System.out.println("                           [ 주문 취소 ]");
+        System.out.println();
+        System.out.println("  1을 입력하시면 현재 열람하고 계신 주문의 진행 상황이 취소됩니다.");
+        System.out.println();
+        System.out.println("        계속하시겠습니까?");
+        System.out.println();
+        System.out.printf("\t%-20s\t%-20s\n", "1. 계속 (주문 취소)", "2. 시스템 종료");
+        System.out.println("-----------------------------------------------------");
+        System.out.print(" 메뉴 선택 : ");
+        String menuNO = scan.nextLine();
+
+        if ("1".equals(menuNO)) {
+          bDao.delete(list.get(listNum-1).getBillNo());
+
+          System.out.println("-----------------------------------------------------");
+          System.out.println();
+          System.out.println("                주문이 취소 처리되었습니다.");
+          System.out.println();
+          System.out.println("                  프로그램을 종료합니다.");
+          System.out.println();
+          System.out.println("-----------------------------------------------------");
+
+          exit();
+
+        } else if ("2".equals(menuNO)) exit();
+
 
       } else {
         System.out.println("다른 값을 입력한 경우");
