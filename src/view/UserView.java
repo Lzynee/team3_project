@@ -92,7 +92,6 @@ public class UserView implements CommonView{
 			System.out.println();
 
 			Nonuser nuser = NuDao.selectById(usercp);
-			System.out.println(username+" "+nuser.getNonuserName());
 			if(username.equals(nuser.getNonuserName()))
 				return usercp;
 
