@@ -109,7 +109,7 @@ public class BillView implements CommonView  {
 			System.out.println();
 			System.out.println("                            이용해 주셔서 감사합니다.");
 			System.out.println();
-			System.out.println(" 1. 메인 메뉴로    2. 시스템 종료");
+			System.out.printf("\t%-20s\t%-20s\n", "1. 메인 메뉴로", "2. 시스템 종료");
 			System.out.println("-----------------------------------------------------");
 			System.out.print(" 메뉴 선택 : ");
 			String menuNO = scan.nextLine();
