@@ -62,7 +62,6 @@ public class ItemView implements CommonView {
             System.out.println("-----------------------------------------------------");
             System.out.println();
             System.out.println("                  로그인에 실패하셨습니다.");
-            System.out.println();
             continue;
           }
 
@@ -96,7 +95,8 @@ public class ItemView implements CommonView {
 
           // 1, 2 외 다른 값을 입력한 경우
         } else {
-          System.out.println("잘못된 접근");
+          System.out.println("잘못된 접근입니다. 다시 시도해 주십시오");
+          break;
 
         }
 
@@ -150,17 +150,25 @@ public class ItemView implements CommonView {
 
       // 처리 작업 분기
 
-      if ("1".equals(menuNum)) {
+      if ("1".equals(menuNum)) {  // 배송 현황 확인
         shippingStatus(list.get(listNum-1).getBillNo());
 
-      } else if ("2".equals(menuNum)) {
+      } else if ("2".equals(menuNum)) {  // 영수증 출력
         BillView.getinstance().billInfo(bDao.selectById(list.get(listNum-1).getBillNo()), list.get(listNum-1));
 
-      } else if ("3".equals(menuNum)) {
-        System.out.println("주문 취소");
+      } else if ("3".equals(menuNum)) {  // 주문 취소
+        System.out.println("-----------------------------------------------------");
+        System.out.println();
+        System.out.println("        해당 주문을 취소합니다.");
+        System.out.println();
+        System.out.println("-----------------------------------------------------");
+
+        // 주문 취소 명령문 실행
+        bDao.delete(list.get(listNum-1).getBillNo());
 
       } else {
         System.out.println("다른 값을 입력한 경우");
+
       }
 
 
