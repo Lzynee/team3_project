@@ -16,7 +16,7 @@ public class FlwOptinfoViewNonuser implements CommonView {
 //		int height = 0;
 		int cost = 0;
 		int mass = 0;
-
+		int totalCharge = 0;
 		// 사이즈 선택 변수 초기화 및 선언
 		String smlSize = "";
 		String volume = "";
@@ -49,7 +49,7 @@ public class FlwOptinfoViewNonuser implements CommonView {
 				System.out.println();
 				System.out.println("-----------------------------------------------------");
 				
-				cost = costs(mass);
+
 
 				// 사이즈 선택 과정
 				// 출력 문구 로직 변경
@@ -78,28 +78,11 @@ public class FlwOptinfoViewNonuser implements CommonView {
 						continue;
 					}
 
-					// --------------------------------
-
-//					System.out.println();
-//					System.out.println("사이즈를 선택해 주세요.");
-//					System.out.println();
-//					System.out.print("가로(cm) : ");
-//					width = Integer.parseInt(scan.nextLine());
-//					System.out.println();
-//					System.out.print("세로(cm) : ");
-//					length = Integer.parseInt(scan.nextLine());
-//					System.out.println();
-//					System.out.print("높이(cm) : ");
-//					height = Integer.parseInt(scan.nextLine());
-//					System.out.println();
-//
-//					if (width + length + height > 160 || width > 100 || length > 100 || height > 100) {
-//						System.out.println("가능한 규격이 아닙니다.");
-//						continue;
-//
-					// --------------------------------
-
 				}
+
+				totalCharge =mass*subCharge(flwOptName,smlSize);
+
+
 
 				// 크기 정의
 				// volume = String.format("%d*%d*%d(cm)", width, length, height);
@@ -114,7 +97,7 @@ public class FlwOptinfoViewNonuser implements CommonView {
 				FlwOpt flwOpt = new FlwOpt();
 				flwOpt.setFlwOptNo(flwOptNum);
 				flwOpt.setFlwOptName(flwOptName);
-				flwOpt.setFlwOptFee(cost);
+				flwOpt.setFlwOptFee(totalCharge);
 				flwOpt.setFlwOptWeight(mass);
 				flwOpt.setFlwOptSize(volume);
 
@@ -129,6 +112,7 @@ public class FlwOptinfoViewNonuser implements CommonView {
 				// 크기 => 사이즈
 				System.out.printf(" | 내용 : %s || 사이즈 : %s || 무게 : %d |\n", flwOptName, volume, mass);
 				System.out.println();
+				System.out.println("고르신 상품 요금은 : "+totalCharge );
 				System.out.println("-----------------------------------------------------");
 				System.out.println();
 				System.out.println("1. 받는 사람 정보 화면으로 2. 정보 다시 입력 3. 메인 메뉴로");
