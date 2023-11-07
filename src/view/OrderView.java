@@ -23,14 +23,14 @@ public class OrderView implements CommonView {
 				System.out.println();
 				System.out.println("-----------------------------------------------------");
 				System.out.println();
-				System.out.printf("\t%-20s\t%-20s\n", "1. 경조사", "2. 기념일");
+				System.out.printf("\t%-20s\t%-20s\n", "1. 기념일", "2. 경조사");
 				System.out.println();
 				System.out.println("-----------------------------------------------------");
 				System.out.print("카테고리 선택(메뉴 외 값 입력시 재선택): ");
 				String categoryNo = scan.nextLine();
 				System.out.println();
 
-				if ("1".equals(categoryNo)) {
+				if ("2".equals(categoryNo)) {
 					System.out.println("-----------------------------------------------------");
 					System.out.println();
 					System.out.println("                   [ 경조사 ]");
@@ -51,7 +51,7 @@ public class OrderView implements CommonView {
 						continue;
 					}
 
-				} else if ("2".equals(categoryNo)) {
+				} else if ("1".equals(categoryNo)) {
 					System.out.println("-----------------------------------------------------");
 					System.out.println();
 					System.out.println("                   [ 기념일 ]");
