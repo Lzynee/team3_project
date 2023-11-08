@@ -196,14 +196,13 @@ public class BillDao {
 			Connection conn = SuperDao.getConnection();
 			
 
-			String sql = "select DISTINCT  zipcode from sigugun where dong like ?  and sido=? and sigugun like ? and num=? and bunum=?";
+			String sql = "select DISTINCT  zipcode from sigugun where sido=? and sigugun like ? and num=? and bunum=? limit 1";
 
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, dong + "%");
-			stmt.setString(2, sido);
-			stmt.setString(3, gugun + "%");
-			stmt.setInt(4, num);
-			stmt.setInt(5, bunum);
+			stmt.setString(1, sido);
+			stmt.setString(2, gugun + "%");
+			stmt.setInt(3, num);
+			stmt.setInt(4, bunum);
 
 			ResultSet re = stmt.executeQuery();
 			int i = 0;

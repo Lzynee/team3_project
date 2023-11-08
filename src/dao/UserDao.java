@@ -130,11 +130,12 @@ public class UserDao {
 
 			Connection conn = SuperDao.getConnection();
 			
-			String sql = "update user set user_grade = ? where user_id=" + "'" + userid + "'";
+			String sql = "update user set user_grade = ? where user_id=?";
 
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			
 			stmt.setInt(1, grade);
+			stmt.setString(2, userid);
 
 			stmt.executeUpdate();
 			stmt.close();
