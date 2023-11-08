@@ -17,7 +17,7 @@ public interface CommonView {
 	// 작성일자 : 2023-05-25
 	//설명 : 요금 계산
 	// 조건 변경에 따른 로직 변경 필요 ( 이창규 )
-	public default int subCharge(String flwOptName , String smlSize) {
+	public default int cost(String flwOptName , String smlSize, int mass) {
 
 		int fCharge = 0;
 		int midCharge = 0;
@@ -41,7 +41,7 @@ public interface CommonView {
 		} else if (smlSize.equals("L")) {
 			midCharge = fCharge+10000;
 		}
-			return midCharge;
+			return midCharge * mass;
 
   }
 
@@ -85,7 +85,7 @@ public interface CommonView {
 	}
 
 	// 수정일자 : 2023-11-08(이창규)
-	public default String payView(int totalCharge, int surcharge) {
+	public default String payView(int cost, int surcharge) {
 
 		try {
 
@@ -94,9 +94,9 @@ public interface CommonView {
 			System.out.println("                     [ 결    제 ]");
 			System.out.println();
 			// 수정일자 : 2023-11-08(이창규)
-			System.out.println("상품 요금 : " + totalCharge +"원과 지역별 요금 " + surcharge+"을 합쳐");
+			System.out.println("상품 요금 : " + cost +"원과 지역별 요금 " + surcharge+"을 합쳐");
 			//System.out.println(" 사이즈별 요금 " + cost +"x"+ cnt +"원과 지역별 요금 " + surcharge+"을 합쳐");
-			System.out.println(" 총 요금은 " + (totalCharge+surcharge)+"원 입니다.");
+			System.out.println(" 총 요금은 " + (cost+surcharge)+"원 입니다.");
 			//System.out.println(" 총 요금은 " + (cost*cnt+surcharge)+"원 입니다.");
 			System.out.println();
 			System.out.println(" 1. 결제   2. 취소");
@@ -116,7 +116,7 @@ public interface CommonView {
 		return "fail";
 	}
 	
-	public default String payView(int totalCharge, int surcharge, int discount) {
+	public default String payView(int cost, int surcharge, int discount) {
 
 		try {
 
@@ -125,9 +125,9 @@ public interface CommonView {
 			System.out.println("                      [ 결    제 ]");
 			System.out.println();
 			// 수정일자 : 2023-11-08(이창규)
-			System.out.println(" 상품 요금 " + totalCharge + "원과 지역별 요금 " + surcharge+"을 합쳐");
+			System.out.println(" 상품 요금 " + cost + "원과 지역별 요금 " + surcharge+"을 합쳐");
 			//System.out.println(" 사이즈별 요금 " + cost +"x"+ cnt +"원과 지역별 요금 " + surcharge+"을 합쳐");
-			System.out.println(" 총 요금은 " + (totalCharge+surcharge)+"원 입니다.");
+			System.out.println(" 총 요금은 " + (cost+surcharge)+"원 입니다.");
 			//System.out.println(" 총 요금은 " + (cost*cnt+surcharge)+"원 입니다.");
 			if(discount == 200) {
 				System.out.println(" 또한 회원 님의 등급인 플래티넘 등급은 " + discount +"원 할인이 되므로");
@@ -136,7 +136,7 @@ public interface CommonView {
 			} else {
 				System.out.println(" 또한 회원 님의 등급인 VVIP 등급은 " + discount +"원 할인이 되므로");
 			}
-			System.out.println(" 총 요금은 " +(totalCharge+surcharge-discount) + "원 입니다.");
+			System.out.println(" 총 요금은 " +(cost+surcharge-discount) + "원 입니다.");
 			System.out.println();
 			System.out.println(" 1. 결제   2. 취소");
 			System.out.println("-----------------------------------------------------");

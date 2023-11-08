@@ -57,7 +57,7 @@ public class ToReceiverInfoViewNonuser implements CommonView{
 				}
 
 				// 무게당 요금과 도서 산간지역을 합쳐 최종 요금 계산
-				int totalFee = flwOpt.getFlwOptFee() + surcharge;
+				int totalFee = cost + surcharge;
 
 
 				// 우편번호와 상품 번호를 조합하여 영수증 번호 생성
