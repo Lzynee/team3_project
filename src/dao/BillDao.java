@@ -249,67 +249,6 @@ public class BillDao {
 		return -1;
 	}
 
-	// 회원 구매내역 리스트를 조회하는 메서드 추가 === (Nov.05. 이양진)
-//	조회 시 출력하는 요금 항목은 상품 자체 가격을 참조함 => total_fee로 수정할지 결정 필요 === (Nov.05. 이양진)
-	public List<PurchaseHistory> selectHistoryAll(String userId) {
-
-		List<PurchaseHistory> list = new ArrayList<>();
-
-		try {
-			Connection conn = SuperDao.getConnection();
-			String sql = "select * from purchase_history where user_id=?";
-			PurchaseHistory vo;
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, userId);
-			ResultSet re = stmt.executeQuery();
-
-			while (re.next()) {
-				vo = new PurchaseHistory();
-				vo.setUserId(re.getString("user_id"));
-				vo.setBillNo(re.getString("bill_no"));
-				vo.setFlwOptName(re.getString("flwopt_name"));
-				vo.setFlwOptSize(re.getString("flwopt_size"));
-				vo.setFlwOptFee(re.getInt("flwopt_fee"));
-				list.add(vo);
-			}
-			re.close();
-			stmt.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return list;
-	}
-
-	public PurchaseHistory selectPurchaseHistory(String userId) {
-
-		PurchaseHistory vo = null;
-
-		try {
-			Connection conn = SuperDao.getConnection();
-			String sql = "select * from purchase_history where user_id=?";
-
-
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, userId);
-			ResultSet re = stmt.executeQuery();
-			while (re.next()) {
-				vo = new PurchaseHistory();
-				vo.setUserId(re.getString("user_id"));
-				vo.setBillNo(re.getString("bill_no"));
-				vo.setFlwOptName(re.getString("flwopt_name"));
-				vo.setFlwOptSize(re.getString("flwopt_size"));
-				vo.setFlwOptFee(re.getInt("flwopt_fee"));
-			}
-			re.close();
-			stmt.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return vo;
-	}
-
 
 //	public List<Company> selectCompanyAll() {
 //
@@ -336,7 +275,6 @@ public class BillDao {
 //		return list;
 //	}
 
-//  택배회사 관련 변수는 사용하지 않을 예정으로 임시 주석 처리 === (Nov.05. 이양진)
 	public String selectCompanyByName(String companyCd) {
 
 		String name = null;
