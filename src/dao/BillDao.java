@@ -166,7 +166,7 @@ public class BillDao {
 			Connection conn = SuperDao.getConnection();
 			
 
-			String sql = "select DISTINCT  zipcode from sigugun where dong like ? and sido=? and sigugun=? and num=?";
+			String sql = "select DISTINCT  zipcode from sigugun where dong like ? and sido=? and sigugun=? and num=? limit 1";
 
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, dong + "%");
@@ -189,20 +189,24 @@ public class BillDao {
 		
 		return -1;
 	}
-	
 
-	public int selectzipcode(String sido, String gugun, String dong, int num, int bunum) {
+
+	public int selectzipcode(String sido, String gugun, String eupOrDong, int num, int bunum) {
 		try {
 			Connection conn = SuperDao.getConnection();
-			
-
-			String sql = "select DISTINCT  zipcode from sigugun where sido=? and sigugun like ? and num=? and bunum=? limit 1";
-
+			String sql = "";
+			//동과 동이 아닌경우 sql 분기처리
+			if('동' == eupOrDong.charAt(eupOrDong.length()-1)){
+				sql = "select DISTINCT  zipcode from sigugun where sido=? and sigugun = ? and dong = ? and num=? and bunum=? limit 1";
+			}else{
+				sql = "select DISTINCT  zipcode from sigugun where sido=? and sigugun = ? and eup = ? and num=? and bunum=? limit 1";
+			}
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, sido);
-			stmt.setString(2, gugun + "%");
-			stmt.setInt(3, num);
-			stmt.setInt(4, bunum);
+			stmt.setString(2, gugun);
+			stmt.setString(3, eupOrDong);
+			stmt.setInt(4, num);
+			stmt.setInt(5, bunum);
 
 			ResultSet re = stmt.executeQuery();
 			int i = 0;
@@ -224,7 +228,7 @@ public class BillDao {
 			Connection conn = SuperDao.getConnection();
 			
 
-			String sql = "select DISTINCT  zipcode from sigugun where dong like ? and sigugun like ? and num=? and bunum=?";
+			String sql = "select DISTINCT  zipcode from sigugun where dong like ? and sigugun like ? and num=? and bunum=? limit 1";
 
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, dong + "%");
