@@ -1,3 +1,8 @@
+/**
+ * 비회원 주문 진행 중
+ * 받는 사람 정보 입력창 구현
+ * */
+
 package view;
 
 import dao.FlwOptDao;
