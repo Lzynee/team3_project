@@ -145,16 +145,20 @@ public class BillDao {
 	public void delete(String billNo) {
 
 		try {
+			// MariaDB 커넥션 실행
 			Connection conn = SuperDao.getConnection();
-			
-
+			// SQL 문 Delete 명령 선언
 			String sql = "delete from bill where bill_no=? ";
-
+			// stmt 클래스의 기능을 향상 시키고 코드 안정성을 높임. (동적인 쿼리문)
 			PreparedStatement stmt = conn.prepareStatement(sql);
+			// 아래 메서드를 통해 데이터를 연결한다 ( "?"에 들어간 값을 )
 			stmt.setString(1, billNo);
+			// 처리한 row의 개수를 반환하는데 처리된 항목이 없다면 0을 반환.
 			stmt.executeUpdate();
+			// 예외가 없다면 연결을 해제한다.
 			stmt.close();
 
+			// 예외가 발생하면 어디서 어떻게 발생했는지 원인 출력.
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
