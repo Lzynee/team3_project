@@ -127,10 +127,10 @@ public class UserDao {
 	}
 	public void gradeUpdate(String userid, int grade) {
 		try {
-			
+
 			Connection conn = SuperDao.getConnection();
 			
-			String sql = "update user set user_grade = ? where user_id=? ";
+			String sql = "update user set user_grade = ? where user_id=?";
 
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			

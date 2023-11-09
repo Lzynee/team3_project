@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.PurchaseHistory;
 import model.Bill;
 
 public class BillDao {
@@ -167,7 +166,7 @@ public class BillDao {
 			Connection conn = SuperDao.getConnection();
 			
 
-			String sql = "select DISTINCT  zipcode from sigugun where dong like ? and sido=? and sigugun=? and num=?";
+			String sql = "select DISTINCT  zipcode from sigugun where dong like ? and sido=? and sigugun=? and num=? limit 1";
 
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, dong + "%");
@@ -190,19 +189,22 @@ public class BillDao {
 		
 		return -1;
 	}
-	
 
-	public int selectzipcode(String sido, String gugun, String dong, int num, int bunum) {
+
+	public int selectzipcode(String sido, String gugun, String eupOrDong, int num, int bunum) {
 		try {
 			Connection conn = SuperDao.getConnection();
-			
-
-			String sql = "select DISTINCT  zipcode from sigugun where dong like ?  and sido=? and sigugun like ? and num=? and bunum=?";
-
+			String sql = "";
+			//동과 동이 아닌경우 sql 분기처리
+			if('동' == eupOrDong.charAt(eupOrDong.length()-1)){
+				sql = "select DISTINCT  zipcode from sigugun where sido=? and sigugun = ? and dong = ? and num=? and bunum=? limit 1";
+			}else{
+				sql = "select DISTINCT  zipcode from sigugun where sido=? and sigugun = ? and eup = ? and num=? and bunum=? limit 1";
+			}
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, dong + "%");
-			stmt.setString(2, sido);
-			stmt.setString(3, gugun + "%");
+			stmt.setString(1, sido);
+			stmt.setString(2, gugun);
+			stmt.setString(3, eupOrDong);
 			stmt.setInt(4, num);
 			stmt.setInt(5, bunum);
 
@@ -226,7 +228,7 @@ public class BillDao {
 			Connection conn = SuperDao.getConnection();
 			
 
-			String sql = "select DISTINCT  zipcode from sigugun where dong like ? and sigugun like ? and num=? and bunum=?";
+			String sql = "select DISTINCT  zipcode from sigugun where dong like ? and sigugun like ? and num=? and bunum=? limit 1";
 
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, dong + "%");
@@ -248,67 +250,6 @@ public class BillDao {
 		
 		
 		return -1;
-	}
-
-	// 회원 구매내역 리스트를 조회하는 메서드 추가 === (Nov.05. 이양진)
-//	조회 시 출력하는 요금 항목은 상품 자체 가격을 참조함 => total_fee로 수정할지 결정 필요 === (Nov.05. 이양진)
-	public List<PurchaseHistory> selectHistoryAll(String userId) {
-
-		List<PurchaseHistory> list = new ArrayList<>();
-
-		try {
-			Connection conn = SuperDao.getConnection();
-			String sql = "select * from purchase_history where user_id=?";
-			PurchaseHistory vo;
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, userId);
-			ResultSet re = stmt.executeQuery();
-
-			while (re.next()) {
-				vo = new PurchaseHistory();
-				vo.setUserId(re.getString("user_id"));
-				vo.setBillNo(re.getString("bill_no"));
-				vo.setFlwOptName(re.getString("flwopt_name"));
-				vo.setFlwOptSize(re.getString("flwopt_size"));
-				vo.setFlwOptFee(re.getInt("flwopt_fee"));
-				list.add(vo);
-			}
-			re.close();
-			stmt.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return list;
-	}
-
-	public PurchaseHistory selectPurchaseHistory(String userId) {
-
-		PurchaseHistory vo = null;
-
-		try {
-			Connection conn = SuperDao.getConnection();
-			String sql = "select * from purchase_history where user_id=?";
-
-
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, userId);
-			ResultSet re = stmt.executeQuery();
-			while (re.next()) {
-				vo = new PurchaseHistory();
-				vo.setUserId(re.getString("user_id"));
-				vo.setBillNo(re.getString("bill_no"));
-				vo.setFlwOptName(re.getString("flwopt_name"));
-				vo.setFlwOptSize(re.getString("flwopt_size"));
-				vo.setFlwOptFee(re.getInt("flwopt_fee"));
-			}
-			re.close();
-			stmt.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return vo;
 	}
 
 
@@ -337,7 +278,6 @@ public class BillDao {
 //		return list;
 //	}
 
-//  택배회사 관련 변수는 사용하지 않을 예정으로 임시 주석 처리 === (Nov.05. 이양진)
 	public String selectCompanyByName(String companyCd) {
 
 		String name = null;

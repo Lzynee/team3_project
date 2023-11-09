@@ -17,7 +17,7 @@ public interface CommonView {
 	// 작성일자 : 2023-05-25
 	//설명 : 요금 계산
 	// 조건 변경에 따른 로직 변경 필요 ( 이창규 )
-	public default int subCharge(String flwOptName , String smlSize) {
+	public default int cost(String flwOptName , String smlSize, int mass) {
 
 		int fCharge = 0;
 		int midCharge = 0;
@@ -41,7 +41,7 @@ public interface CommonView {
 		} else if (smlSize.equals("L")) {
 			midCharge = fCharge+10000;
 		}
-			return midCharge;
+			return midCharge * mass;
 
   }
 
@@ -52,7 +52,8 @@ public interface CommonView {
 
 	// 작성자 : 명지완
 	// 작성일자 : 2023-05-25
-	//설명 : 주소 값을 받아 분리하는 기능 
+	//설명 : 주소 값을 받아 분리하는 기능
+
 	public default int getZipCode(String line) {
 
 		String[] strToStrArray = line.split(" ");
@@ -83,6 +84,7 @@ public interface CommonView {
 		return zipcode;
 	}
 
+	// 수정일자 : 2023-11-08(이창규)
 	public default String payView(int cost, int surcharge) {
 
 		try {
@@ -91,8 +93,8 @@ public interface CommonView {
 			System.out.println();
 			System.out.println("                     [ 결    제 ]");
 			System.out.println();
-			// 현재 cost로만 받아오고 있는데, flwoptinfoView에서 사이즈와 수량을 넘겨주고-> ToReceverInfoview가 받아야됨
-			System.out.println(" 사이즈별 요금 " + cost +"원과 지역별 요금 " + surcharge+"을 합쳐");
+			// 수정일자 : 2023-11-08(이창규)
+			System.out.println("상품 요금 : " + cost +"원과 지역별 요금 " + surcharge+"을 합쳐");
 			//System.out.println(" 사이즈별 요금 " + cost +"x"+ cnt +"원과 지역별 요금 " + surcharge+"을 합쳐");
 			System.out.println(" 총 요금은 " + (cost+surcharge)+"원 입니다.");
 			//System.out.println(" 총 요금은 " + (cost*cnt+surcharge)+"원 입니다.");
@@ -122,8 +124,8 @@ public interface CommonView {
 			System.out.println();
 			System.out.println("                      [ 결    제 ]");
 			System.out.println();
-			// 현재 cost로만 받아오고 있는데, flwoptinfoView에서 사이즈와 수량을 넘겨주고-> ToReceverInfoview가 받아야됨
-			System.out.println(" 사이즈별 요금 " + cost +"원과 지역별 요금 " + surcharge+"을 합쳐");
+			// 수정일자 : 2023-11-08(이창규)
+			System.out.println(" 상품 요금 " + cost + "원과 지역별 요금 " + surcharge+"을 합쳐");
 			//System.out.println(" 사이즈별 요금 " + cost +"x"+ cnt +"원과 지역별 요금 " + surcharge+"을 합쳐");
 			System.out.println(" 총 요금은 " + (cost+surcharge)+"원 입니다.");
 			//System.out.println(" 총 요금은 " + (cost*cnt+surcharge)+"원 입니다.");

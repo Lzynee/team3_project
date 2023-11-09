@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>view.UserView</OriginalElement>
+  <nodes>
+    <node x="1034.1885861694427" y="-749.0657585083273">view.ToReceiverInfoView</node>
+    <node x="515.4699493120927" y="-516.1796252715424">view.UserView</node>
+    <node x="204.17421705286006" y="-505.5089608979001">view.BillView</node>
+    <node x="1353.96850108617" y="-749.0657585083273">view.OrderView</node>
+    <node x="-37.1645999275886" y="-739.5448044895004">view.FlwOptinfoView</node>
+    <node x="662.5583816075309" y="-739.5448044895004">view.FlwOptinfoViewNonuser</node>
+    <node x="817.8734838884868" y="-516.1796252715424">view.ItemView</node>
+    <node x="294.9760137581462" y="-739.5448044895004">view.ToReceiverInfoViewNonuser</node>
+    <node x="511.9699493120927" y="-220.81444605358433">view.MainView</node>
+    <node x="523.4699493120927" y="-1081.4250090514117">view.CommonView</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="view.BillView" target="view.UserView" relationship="CREATE">
+      <point x="1.724137930239067E-4" y="-68.0" />
+      <point x="303.6743894666531" y="-436.17962527154236" />
+      <point x="631.4699493120927" y="-436.17962527154236" />
+      <point x="-5.6843418860808015E-14" y="92.0" />
+    </edge>
+    <edge source="view.ItemView" target="view.UserView" relationship="CREATE">
+      <point x="1.724137930523284E-4" y="-80.0" />
+      <point x="934.8736563022799" y="-436.17962527154236" />
+      <point x="631.4699493120927" y="-436.17962527154236" />
+      <point x="-5.6843418860808015E-14" y="92.0" />
+    </edge>
+    <edge source="view.OrderView" target="view.CommonView" relationship="REALIZATION">
+      <point x="0.0" y="-68.0" />
+      <point x="1462.46850108617" y="-786.4909033309197" />
+      <point x="631.4699493120927" y="-786.4909033309197" />
+      <point x="0.0" y="104.0" />
+    </edge>
+    <edge source="view.ToReceiverInfoViewNonuser" target="view.CommonView" relationship="REALIZATION">
+      <point x="0.0" y="-80.0" />
+      <point x="452.4760137581462" y="-786.4909033309197" />
+      <point x="631.4699493120927" y="-786.4909033309197" />
+      <point x="0.0" y="104.0" />
+    </edge>
+    <edge source="view.ItemView" target="view.CommonView" relationship="REALIZATION">
+      <point x="58.5" y="-80.0" />
+      <point x="993.3734838884868" y="-786.4909033309197" />
+      <point x="631.4699493120927" y="-786.4909033309197" />
+      <point x="0.0" y="104.0" />
+    </edge>
+    <edge source="view.MainView" target="view.UserView" relationship="CREATE">
+      <point x="-5.6843418860808015E-14" y="-80.0" />
+      <point x="631.4699493120927" y="-178.42926321506144" />
+      <point x="631.4699493120927" y="-178.42926321506144" />
+      <point x="-5.6843418860808015E-14" y="92.0" />
+    </edge>
+    <edge source="view.ToReceiverInfoView" target="view.CommonView" relationship="REALIZATION">
+      <point x="0.0" y="-80.0" />
+      <point x="1164.6885861694427" y="-786.4909033309197" />
+      <point x="631.4699493120927" y="-786.4909033309197" />
+      <point x="0.0" y="104.0" />
+    </edge>
+    <edge source="view.BillView" target="view.CommonView" relationship="REALIZATION">
+      <point x="-49.75" y="-68.0" />
+      <point x="253.92421705286006" y="-786.4909033309197" />
+      <point x="631.4699493120927" y="-786.4909033309197" />
+      <point x="0.0" y="104.0" />
+    </edge>
+    <edge source="view.UserView" target="view.CommonView" relationship="REALIZATION">
+      <point x="0.0" y="-92.0" />
+      <point x="0.0" y="104.0" />
+    </edge>
+    <edge source="view.FlwOptinfoView" target="view.CommonView" relationship="REALIZATION">
+      <point x="0.0" y="-68.0" />
+      <point x="80.8354000724114" y="-786.4909033309197" />
+      <point x="631.4699493120927" y="-786.4909033309197" />
+      <point x="0.0" y="104.0" />
+    </edge>
+    <edge source="view.FlwOptinfoViewNonuser" target="view.CommonView" relationship="REALIZATION">
+      <point x="0.0" y="-56.0" />
+      <point x="807.5583816075309" y="-786.4909033309197" />
+      <point x="631.4699493120927" y="-786.4909033309197" />
+      <point x="0.0" y="104.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.7927643699336773" showDependencies="true" x="826.3098620188816" y="-541.7809440813363" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

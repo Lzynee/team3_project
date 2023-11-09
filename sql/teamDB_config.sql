@@ -91,17 +91,7 @@ create table user_address(
 -- 최초 작성자 : 이양진
 -- 작성 일시 : 2023.11.05
 -- 수정 : ( 2023.11.06 이창규 ) 
-DROP table IF EXISTS purchase_history;
-CREATE TABLE purchase_history(
-	`user_id` varchar(15) comment '회원 ID',
-    `non_name` VARCHAR(10) NOT NULL COMMENT '비회원 성함',
-    `bill_no` varchar(10) not null comment '주문 번호',
-    `flwOpt_name` varchar(10) NOT NULL comment '상품명',
-    `flwOpt_size` varchar(15) comment '상품 크기',
-    `flwOpt_fee` int(10) comment '요금',
-	PRIMARY KEY(`user_id`),
-    FOREIGN KEY(`bill_no`) REFERENCES bill(`bill_no`) on DELETE CASCADE
-);
+-- 사용하지 않는 테이블 생성문 삭제 === (2023.11.08 이양진)
 
 -- company DB 추가 === (2023.11.05 차소영 수정)
 
@@ -125,7 +115,6 @@ insert into company values('17', 'KGB택배');
 insert into company values('18', 'SLX 택배');
 insert into company values('19', '일양로지스');
 insert into company values('20', '홈픽택배');
-
 -- data3.txt 각자 경로로 설정
 load data local infile 'D:\\project_data\\team3\\sql\\data3.txt' into table sigugun fields terminated BY '\t' lines terminated by '\n';
 

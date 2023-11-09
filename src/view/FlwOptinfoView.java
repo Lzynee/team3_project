@@ -85,8 +85,8 @@ public class FlwOptinfoView implements CommonView {
 						continue;
 					}
 				}
-
-				totalCharge =mass*subCharge(flwOptName,smlSize);
+				cost = cost(flwOptName, smlSize, mass);
+				//totalCharge =mass*subCharge(flwOptName,smlSize);
 
 
 
@@ -106,7 +106,7 @@ public class FlwOptinfoView implements CommonView {
 				FlwOpt flwOpt = new FlwOpt();
 				flwOpt.setFlwOptNo(flwoptNum);
 				flwOpt.setFlwOptName(flwOptName);
-				flwOpt.setFlwOptFee(totalCharge);
+				flwOpt.setFlwOptFee(cost);
 				flwOpt.setFlwOptWeight(mass);
 				flwOpt.setFlwOptSize(volume);
 
@@ -122,7 +122,7 @@ public class FlwOptinfoView implements CommonView {
 				// 크기 => 사이즈
 				System.out.printf(" | 내용 : %s || 사이즈 : %s || 무게 : %d |\n", flwOptName, volume, mass);
 				System.out.println();
-				System.out.println("고르신 상품 요금은 : "+totalCharge );
+				System.out.println("고르신 상품 요금은 : "+cost );
 				System.out.println("-----------------------------------------------------");
 				System.out.println();
 				System.out.println("1. 받는 사람 정보 화면으로 2. 정보 다시 입력 3. 메인 메뉴로");

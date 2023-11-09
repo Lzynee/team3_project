@@ -216,13 +216,13 @@ public class ToReceiverInfoView implements CommonView {
 
 				if ("1".equals(menuNo)) {
 					
-					int grade = user.getUserGrade();
+					int grade = uDao.selectById(userId).getUserGrade();
 					int discount;
 					
 					//등급 별 할인 값 구하기
-					if(grade <= 100) {
+					if(grade <= 1) {
 						discount = 200;
-					} else if (grade <= 200) {
+					} else if (grade <= 3) {
 						discount = 500;
 					} else {
 						discount = 1000;
@@ -247,8 +247,7 @@ public class ToReceiverInfoView implements CommonView {
 						bill.setMsg(msg);
 						
 						// 결제 완료 시 등급 +1
-						grade++;
-						user.setUserGrade(grade);
+						grade = grade + 1;
 						uDao.gradeUpdate(userId, grade);
 						
 						// 결제 완료 시 운송장데이터 생성
