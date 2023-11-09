@@ -92,7 +92,7 @@ public class UserDao {
 			stmt.setString(5, vo.getUserDetailAddr());
 			stmt.setString(6, vo.getUserCp());
 
-			stmt.executeUpdate(); // 여기서 에러
+			stmt.executeUpdate();
 			stmt.close();
 			return true;
 		} catch (Exception e) {
@@ -183,7 +183,7 @@ public class UserDao {
 			stmt.setString(4, rcvrDetailAddr);
 			stmt.setString(5, rcvrCp);
 
-			stmt.executeUpdate(); // 여기서 에러
+			stmt.executeUpdate();
 			stmt.close();
 			return true;
 		} catch (Exception e) {
@@ -206,7 +206,7 @@ public class UserDao {
 			stmt.setString(4, vo.getRcvrDetailAddr());
 			stmt.setString(5, vo.getRcvrCp());
 
-			stmt.executeUpdate(); // 여기서 에러
+			stmt.executeUpdate(); 
 			stmt.close();
 			return true;
 		} catch (Exception e) {
