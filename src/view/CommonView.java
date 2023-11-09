@@ -50,9 +50,8 @@ public interface CommonView {
 
 
 
-
-	//설명 : 주소 값을 받아 분리하는 기능
-
+	// 설명 : 주소 값을 받아 분리하는 기능
+	// 작성자 : 최영주 (2023-11-07) 
 	public default int getZipCode(String line) {
 
 		String[] strToStrArray = line.split(" ");
