@@ -15,8 +15,8 @@ public interface CommonView {
 
 
 	// 작성일 : 2023-11-06
-	//설명 : 요금 계산
-	// 조건 변경에 따른 로직 변경 필요 ( 이창규 )
+	//설명 : 요금 계산 ( 조건 변경에 따른 로직 변경 )
+	// 작성자 : 이창규
 	public default int cost(String flwOptName , String smlSize, int mass) {
 
 		int fCharge = 0;
