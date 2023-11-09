@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>dao.SuperDao</OriginalElement>
+  <nodes>
+    <node x="-72.33660825816628" y="-98.99542699909584">dao.SuperDao</node>
+    <node x="-72.33660825816628" y="355.6183770993295">dao.UserDao</node>
+    <node x="315.48587178723045" y="44.311475050116826">dao.BillDao</node>
+    <node x="-72.33660825816628" y="44.31147505011684">dao.FlwOptDao</node>
+    <node x="402.79575294233507" y="355.6183770993295">dao.NonuserDao</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic" zoom="0.7981920903954803" showDependencies="false" x="481.71729898074733" y="233.7849660249151" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

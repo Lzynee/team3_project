@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>model.Useraddress</OriginalElement>
+  <nodes>
+    <node x="362.7154236060825" y="67.51122375090513">model.Nonuser</node>
+    <node x="374.7154236060825" y="217.8269370021724">model.User</node>
+    <node x="589.7885590152061" y="67.51122375090512">model.FlwOpt</node>
+    <node x="160.6422881969587" y="67.51122375090513">model.Bill</node>
+    <node x="582.7885590152061" y="277.8269370021724">model.Company</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic" zoom="1.3065279091769157" showDependencies="false" x="491.3269370021724" y="327.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
