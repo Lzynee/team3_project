@@ -13,7 +13,7 @@ public interface CommonView {
 		System.exit(0);
 	}
 
-	// 작성자 : 강철구
+
 	// 작성일자 : 2023-05-25
 	//설명 : 요금 계산
 	// 조건 변경에 따른 로직 변경 필요 ( 이창규 )
