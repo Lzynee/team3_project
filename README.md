@@ -29,23 +29,28 @@
 # 다이어그램
 
 ## 💠 유스 케이스 다이어그램
-![image](https://github.com/Lzynee/team3_project/assets/145524819/302c4c95-8946-45ce-ab0a-d1a6c1284443)
+![image](https://github.com/Lzynee/team3_project/blob/develop/uml/result_img/Use-Case%20Diagram.png?raw=true)
+
 
 <br><br>
 
 ## 💠 블록 다이어그램
-![image](https://github.com/Lzynee/team3_project/assets/145524819/5ce8f70f-94f2-406c-b0ae-2237be2def73)
+![image](https://github.com/Lzynee/team3_project/blob/develop/uml/result_img/%EB%B8%94%EB%A1%9D%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8.png?raw=true)
+
 
 <br><br>
 
 ## 💠 ERD
+### 논리적 ERD
 
-![image](https://github.com/Lzynee/team3_project/assets/145524819/a2e0bed5-7b6a-45a3-8e6c-444397f96839)
+![image](https://github.com/Lzynee/team3_project/blob/develop/uml/result_img/%EB%85%BC%EB%A6%AC%EC%A0%81ERD.png?raw=true)
 
 
-<br>
+<br><br>
 
-![image](https://github.com/Lzynee/team3_project/assets/145524819/b696175f-eae6-43fa-b726-14e15b01253d)
+### 물리적 ERD
+
+![image](https://github.com/Lzynee/team3_project/blob/develop/uml/result_img/%EB%AC%BC%EB%A6%AC%EC%A0%81ERD.png?raw=true)
 
 <br><br>
 
@@ -65,7 +70,9 @@
 
 ## 💠 시퀀스 다이어그램
 
-![image](https://github.com/Lzynee/team3_project/assets/145524819/555b178e-23c2-40dd-8ae5-8a1e4c2c0236)
+![image](https://github.com/Lzynee/team3_project/blob/develop/uml/result_img/sequence%20_purchase_service.png?raw=true)
+<br>
+![image](https://github.com/Lzynee/team3_project/blob/develop/uml/result_img/sequence_view_list.png?raw=true)
 
 <br><br>
 
