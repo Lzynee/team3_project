@@ -1,6 +1,24 @@
 # 프로젝트 소개
+<p>
+  &nbsp; 본 프로젝트는 2023-2024 천재 IT교육센터의 자바 풀스택 개발자 양성 과정에서 진행한 팀 프로젝트이다.
+</p>
+<br>
+
+  - 프로젝트 목표 : CRUD 기능을 구현한 자바 프로그램 작성 <br> 
+  - 프로젝트명 : 꽃천재숍 <br>
+  
+| 기능 분류 | 프로그램 내 구현 형태 |
+| --- | --- |
+| CREATE | 회원가입, 새 즐겨찾기 목록 생성, 영수증 생성 |
+| READ | 즐겨찾기 목록 불러오기, 구매 내역 불러오기 |
+| UPDATE | 즐겨찾기 목록 추가, 구매 내역 추가, 회원 등급 업데이트, 배달 현황 업데이트 |
+| DELETE | 구매 내역 삭제 |
+  
+  - 프로젝트 요약 : 꽃 배달 서비스를 테마로 하여 CRUD 기능을 구현한 자바 프로그램 <br>
+  - 프로젝트 진행 기간 : 2023. 10. 23. ~ 2023. 11. 10. <br>
 
 <br><br>
+
 
 # 멤버 소개
 
@@ -30,7 +48,7 @@
 # 다이어그램
 
 ## 💠 유스 케이스 다이어그램
-![image](https://github.com/Lzynee/team3_project/blob/develop/uml/result_img/Use-Case%20Diagram.png?raw=true)
+![image](https://github.com/Lzynee/team3_project/blob/develop/uml/result_img/use_case_diargram.png?raw=true)
 
 
 <br><br>
