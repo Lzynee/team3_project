@@ -157,6 +157,8 @@ public class BillView implements CommonView  {
 					System.out.println();
 					String userId = userV.Login();
 
+				// 로그인 성공시
+
 					if (userId.equals(wb.getUserId()) ) {
 
 						System.out.println("-----------------------------------------------------");
@@ -168,10 +170,13 @@ public class BillView implements CommonView  {
 						System.out.print(" 메뉴 선택 : ");
 						String menuNum = scan.nextLine();
 
+						// 주문 내역 확인 선택 시
 						if ("1".equals(menuNum)) {
+							// BillDao -> Bill selectById(String billNum) 호출해서 주문번호 조회
 							billInfo(wb,pc);
 							break;
 						} else {
+							// 삭제를 선택 시 BillDao -> Delete 실행해 주문번호 삭제
 							wbDao.delete(wbNum);
 							
 							System.out.println("-----------------------------------------------------");

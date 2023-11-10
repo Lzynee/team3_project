@@ -1,3 +1,9 @@
+/**
+ * 비회원 주문 진행
+ * 로그인 시 기입한 전화번호와 주문한 상품,
+ * 수량과 크기를 반영해 계산한 상품 가격을 ToReceiverInfoViewNonuser로 넘긴다.
+ * */
+
 package view;
 
 import dao.FlwOptDao;

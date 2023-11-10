@@ -1,3 +1,9 @@
+/**
+ * 주문 내역 조회의 전반적인 기능 및 인터페이스 구현
+ * 구매 내역에 대한 배송현황 조회 기능을 구현함
+ * 영수증 조회 및 출력하는 메소드를 불러온다.
+ * */
+
 package view;
 
 import dao.FlwOptDao;
@@ -286,7 +292,7 @@ public class ItemView implements CommonView {
                 // 장소는 1시간내 구간인 경우 허브, 아니면 수령인 주소기반 표시
                 String location = (i == 1) ? hub[hubNum] : strToStrArray[1];
                 // 시간 경과에 따라 상태 변경
-                String status = (i == 1) ? "집하" : i == 2 ? "캠프도착" : i == 3 ? "배송출발" : "배송완료";
+                String status = (i == 1) ? "집하" : (i == 2) ? "캠프도착" : (i == 3) ? "배송출발" : "배송완료";
                 // 시간 , 위치, 배송상태 출력
                 System.out.println(shippingTime + "\t\t" + location + "\t\t\t" + status);
             }

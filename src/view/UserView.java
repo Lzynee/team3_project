@@ -1,3 +1,11 @@
+/**
+ * 로그인 및 회원가입 관련 출력창
+ * Login() : 회원 로그인 메소드
+ * Non_userlogin() : 비회원 최초 로그인 메소드
+ * Non_userlogin_check() : 최초 이후 비회원 로그인 메소드
+ * JoinUser() : 회원가입 메소드
+ * */
+
 package view;
 
 import dao.NonuserDao;

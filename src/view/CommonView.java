@@ -13,10 +13,10 @@ public interface CommonView {
 		System.exit(0);
 	}
 
-	// 작성자 : 강철구
-	// 작성일자 : 2023-05-25
-	//설명 : 요금 계산
-	// 조건 변경에 따른 로직 변경 필요 ( 이창규 )
+
+	// 작성일 : 2023-11-06
+	//설명 : 요금 계산 ( 조건 변경에 따른 로직 변경 )
+	// 작성자 : 이창규
 	public default int cost(String flwOptName , String smlSize, int mass) {
 
 		int fCharge = 0;
@@ -50,10 +50,8 @@ public interface CommonView {
 
 
 
-	// 작성자 : 명지완
-	// 작성일자 : 2023-05-25
-	//설명 : 주소 값을 받아 분리하는 기능
-
+	// 설명 : 주소 값을 받아 분리하는 기능
+	// 작성자 : 최영주 (2023-11-07)
 	public default int getZipCode(String line) {
 
 		String[] strToStrArray = line.split(" ");
