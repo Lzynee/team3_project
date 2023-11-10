@@ -1,5 +1,3 @@
-![image](https://github.com/Lzynee/team3_project/assets/145524819/653538d1-6d3c-4254-9360-01844e5c92bb)# 
-
 # 프로젝트 소개
 
 <br><br>
