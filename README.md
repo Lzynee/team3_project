@@ -4,9 +4,10 @@
 
 # 멤버 소개
 
-<div>
-
-</div>
+### 이양진 🔗[GitHub @Lzynee (Yangjean Lee)](https://github.com/Lzynee/)
+### 이창규 🔗[GitHub @kidchang93 (CK)](https://github.com/kidchang93/)
+### 차소영 🔗[GitHub @Eumnya415 (CHA)](https://github.com/Eumnya415/)
+### 최영주 🔗[GitHub @cyj083386 (YeongJu Choi)](https://github.com/cyj083386/)
 <br><br>
 
 # 요구사항 명세
@@ -50,7 +51,7 @@
 
 ### 물리적 ERD
 
-![image](https://github.com/Lzynee/team3_project/blob/develop/uml/result_img/%EB%AC%BC%EB%A6%AC%EC%A0%81ERD.png?raw=true)
+![image](https://github.com/Lzynee/team3_project/blob/develop/uml/result_img/%EB%AC%BC%EB%A6%AC%EC%A0%81%20ERD.png?raw=true)
 
 <br><br>
 
