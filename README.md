@@ -111,7 +111,31 @@
 <br><br>
 
 # 핵심 코드
-
+![image](https://github.com/Lzynee/team3_project/assets/145524819/d649a9e6-e725-4ef7-be9f-bdf5ec5e1fb0)
+<br>
+![image](https://github.com/Lzynee/team3_project/assets/145524819/5c4bdc4c-6818-4241-9aa1-6bb96576e3ee)
+<br>
+![image](https://github.com/Lzynee/team3_project/assets/145524819/eba5c6c9-749c-4fb7-8445-9ea7d2211ab8)
+<br>
+![image](https://github.com/Lzynee/team3_project/assets/145524819/4e954453-ba36-4266-8a97-cb84297794a3)
 <br><br>
 
+
 # 구동화면
+### 로그인 후 구매
+<p>
+  <video src="https://github.com/Lzynee/team3_project/assets/145524819/8274b2e6-f83a-46fe-a429-c81954e01b6e"></video>
+</p>
+<br><br>
+
+### 주문접수
+<p>
+  <video src="https://user-images.githubusercontent.com/145524819/281965831-9acd1ba0-ae36-4b13-b65b-5d0301bd5f55.mp4"></video>
+</p>
+<br><br>
+
+### 회원가입
+
+<p>
+  <video src="https://user-images.githubusercontent.com/145524819/281966111-d834c343-b953-45e3-81f3-2d9c0f9eb388.mp4"></video>
+</p>
