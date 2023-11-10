@@ -4,10 +4,10 @@
 
 # 멤버 소개
 
-### 이양진 🔗[GitHub @Lzynee (Yangjean Lee)](https://github.com/Lzynee/)
-### 이창규 🔗[GitHub @kidchang93 (CK)](https://github.com/kidchang93/)
-### 차소영 🔗[GitHub @Eumnya415 (CHA)](https://github.com/Eumnya415/)
-### 최영주 🔗[GitHub @cyj083386 (YeongJu Choi)](https://github.com/cyj083386/)
+### 이양진 :octocat:[@Lzynee (Yangjean Lee)](https://github.com/Lzynee/)
+### 이창규 :octocat:[@kidchang93 (CK)](https://github.com/kidchang93/)
+### 차소영 :octocat:[@Eumnya415 (CHA)](https://github.com/Eumnya415/)
+### 최영주 :octocat:[@cyj083386 (YeongJu Choi)](https://github.com/cyj083386/)
 <br><br>
 
 # 요구사항 명세
