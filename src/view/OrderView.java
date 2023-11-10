@@ -1,3 +1,11 @@
+/**
+ * 상품의 세부 주문사항에 관한 인터페이스 구현
+ * 상품의 전체 및 서브 카테고리는 회원/비회원 공통,
+ * 주문한 내용을 넘기는 목적지가 로그인 방식에 따라 달라짐.
+ * 회원일 경우 : 주문한 내용을 FlwOptinfoView에 넘긴다.
+ * 비회원일 경우 : FlwOptinfoViewNonuser에 넘긴다.
+ * */
+
 package view;
 
 import dao.SuperDao;
