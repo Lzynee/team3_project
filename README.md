@@ -56,17 +56,18 @@
 
 ## 💠 클래스 다이어그램
 
-![image](https://github.com/Lzynee/team3_project/assets/145524819/0d77edd3-8528-48df-9188-f47ee0c46efc)
+![image](https://github.com/Lzynee/team3_project/assets/145524819/b4ef9918-a034-44eb-a12c-7345dfee43c3)
 
 <br>
 
-![image](https://github.com/Lzynee/team3_project/assets/145524819/607466ea-7585-4b06-8ed8-48bbd714e5b0)
+![image](https://github.com/Lzynee/team3_project/assets/145524819/96ea5452-f4a6-4b66-a513-6d133d5237b5)
 
 <br>
 
-![image](https://github.com/Lzynee/team3_project/assets/145524819/c7def1d1-5722-4951-aeb7-712c82269a64)
+![image](https://github.com/Lzynee/team3_project/assets/145524819/f49b0e9d-a5fa-46fb-a90c-a618ee6204f9)
 
 <br><br>
+
 
 ## 💠 시퀀스 다이어그램
 
